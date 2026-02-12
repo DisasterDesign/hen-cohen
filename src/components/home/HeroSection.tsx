@@ -85,14 +85,14 @@ export default function HeroSection({ locale, messages }: HeroSectionProps) {
           className="absolute inset-0 w-full h-full object-cover"
           poster="https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=1920&q=80"
         >
-          <source src="/videos/hero.mp4" type="video/mp4" />
+          <source src="/videos/hero-bg.mp4" type="video/mp4" />
         </video>
         <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/60" />
       </motion.div>
 
       {/* Content */}
       <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-6">
-        <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-[#FAFBF6] max-w-4xl leading-tight">
+        <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-[#FAFBF6] max-w-4xl leading-tight drop-shadow-[0_2px_12px_rgba(0,0,0,0.6)]">
           <WordReveal text={messages.tagline} delay={0.3} />
         </h1>
 
@@ -100,7 +100,7 @@ export default function HeroSection({ locale, messages }: HeroSectionProps) {
           initial={reduced ? { opacity: 0 } : { opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: reduced ? 0.2 : 0.8, delay: 0.8, ease: CINEMATIC_EASE }}
-          className="mt-6 text-sm sm:text-base md:text-lg text-[#FAFBF6]/80 max-w-2xl leading-relaxed"
+          className="mt-6 text-sm sm:text-base md:text-lg text-[#FAFBF6]/80 max-w-2xl leading-relaxed drop-shadow-[0_1px_8px_rgba(0,0,0,0.5)]"
         >
           {messages.subtitle}
         </motion.p>
@@ -113,7 +113,7 @@ export default function HeroSection({ locale, messages }: HeroSectionProps) {
           >
             <Link
               href={`/${locale}/work`}
-              className="btn-outline px-8 py-3 border border-[#FAFBF6]/80 text-[#FAFBF6] text-xs tracking-[0.2em]"
+              className="btn-outline px-8 py-3 border border-[#FAFBF6]/80 text-[#FAFBF6] text-xs tracking-[0.2em] shadow-[0_2px_16px_rgba(0,0,0,0.4)]"
             >
               {messages.ctaWork}
             </Link>
@@ -125,7 +125,7 @@ export default function HeroSection({ locale, messages }: HeroSectionProps) {
           >
             <Link
               href={`/${locale}/contact`}
-              className="btn-solid px-8 py-3 bg-[#FAFBF6] text-[#1B1B19] text-xs tracking-[0.2em]"
+              className="btn-solid px-8 py-3 bg-[#FAFBF6] text-[#1B1B19] text-xs tracking-[0.2em] shadow-[0_2px_16px_rgba(0,0,0,0.4)]"
             >
               {messages.ctaContact}
             </Link>
@@ -145,7 +145,7 @@ export default function HeroSection({ locale, messages }: HeroSectionProps) {
           <motion.div
             animate={reduced ? {} : { y: [0, 8, 0] }}
             transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
-            className="w-5 h-8 border border-[#FAFBF6]/40 rounded-full flex justify-center"
+            className="w-5 h-8 border border-[#FAFBF6]/40 rounded-full flex justify-center drop-shadow-[0_1px_6px_rgba(0,0,0,0.4)]"
           >
             <motion.div
               animate={reduced ? {} : { opacity: [0, 1, 0], y: [0, 12, 0] }}
