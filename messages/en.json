@@ -1,0 +1,75 @@
+{
+  "nav": {
+    "home": "HOME",
+    "work": "WORK",
+    "about": "ABOUT",
+    "contact": "CONTACT"
+  },
+  "hero": {
+    "tagline": "If your story matters, let's tell it honestly.",
+    "subtitle": "Director. Cinematographer. Editor. Thoughtful documentary films shaped with care.",
+    "ctaWork": "VIEW WORK",
+    "ctaContact": "START A CONVERSATION"
+  },
+  "selectedWork": {
+    "label": "SELECTED WORK",
+    "title": "Projects",
+    "viewAll": "VIEW ALL WORK →"
+  },
+  "collaboration": {
+    "label": "COLLABORATION",
+    "title": "How We Can Work Together",
+    "card1Title": "Documentary Films",
+    "card1Desc": "Long-form stories that reveal the beauty and complexity of real life.",
+    "card2Title": "Organizational & Nonprofit Films",
+    "card2Desc": "Purposeful storytelling that amplifies your mission and moves people to act.",
+    "card3Title": "Branded Human Stories",
+    "card3Desc": "Authentic narratives that build trust and emotional connection with your audience.",
+    "cta": "START A PROJECT →"
+  },
+  "quote": {
+    "text": "Every story deserves to be told with care."
+  },
+  "work": {
+    "label": "SELECTED WORK",
+    "title": "Projects"
+  },
+  "project": {
+    "backToWork": "← ALL PROJECTS",
+    "nextProject": "NEXT PROJECT →",
+    "year": "Year",
+    "category": "Category",
+    "synopsis": "Synopsis",
+    "credits": "Credits",
+    "awards": "Awards"
+  },
+  "about": {
+    "label": "ABOUT",
+    "title": "Hen Cohen",
+    "bioTitle": "Why I Do This",
+    "bio1": "I value honesty.\nSimplicity.\nThe kind of truth that doesn't need to be exaggerated to be powerful.",
+    "bio2": "I'm not drawn to spectacle or noise.\nI'm drawn to what's real — the quiet beauty inside everyday moments, the small details that most people overlook. That's where the emotion lives.",
+    "bio3": "I'm deeply curious about people. I love watching someone open up in front of the camera, slowly recognizing themselves in a new way. There is something powerful about seeing someone feel proud of what they see on screen — and knowing I helped create that space.",
+    "bio4": "As a director, cinematographer and editor, I'm involved in the entire process. I shape each story carefully, with clarity and intention. I know the value of what I bring — both creatively and professionally — and I don't take the trust you place in me lightly.",
+    "bio5": "For me, filmmaking is not about exposure.\nIt's about connection.\nIt's about creating something meaningful that stays with you long after the screen goes dark."
+  },
+  "contact": {
+    "label": "CONTACT",
+    "title": "Let's create something meaningful.",
+    "subtitle": "Tell me about your project and I'll get back to you soon.",
+    "name": "Name",
+    "organization": "Organization",
+    "email": "Email",
+    "message": "What would you like to create?",
+    "send": "SEND MESSAGE",
+    "directContact": "Or reach out directly:",
+    "whatsapp": "WhatsApp: +972 50-272-7599",
+    "instagram": "Instagram: @hen_ofir_cohen",
+    "thankYou": "Thank you!",
+    "sent": "Your message has been sent. I'll get back to you soon."
+  },
+  "footer": {
+    "name": "Hen Cohen",
+    "copyright": "© 2026 Hen Cohen. All rights reserved."
+  }
+}

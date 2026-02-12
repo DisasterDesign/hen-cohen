@@ -1,0 +1,168 @@
+@import "tailwindcss";
+
+:root {
+  --bg-primary: #FAFBF6;
+  --bg-dark: #1B1B19;
+  --text-primary: #1B1B19;
+  --text-secondary: rgba(27, 27, 25, 0.55);
+  --text-light: #FAFBF6;
+  --accent: #1B1B19;
+  --border: rgba(27, 27, 25, 0.12);
+}
+
+@theme inline {
+  --color-bg-primary: var(--bg-primary);
+  --color-bg-dark: var(--bg-dark);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-light: var(--text-light);
+  --color-accent: var(--accent);
+  --color-border: var(--border);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Direction-aware font classes */
+[dir="rtl"] {
+  font-family: var(--font-heebo), system-ui, sans-serif;
+}
+
+[dir="ltr"] {
+  font-family: var(--font-inter), system-ui, sans-serif;
+}
+
+.font-heading {
+  font-family: var(--font-playfair), serif;
+}
+
+[dir="rtl"] .font-heading {
+  font-family: var(--font-frank-ruhl), serif;
+}
+
+/* Nav link underline — slides in from left */
+.nav-link {
+  position: relative;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: currentColor;
+  transition: width 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* Accent underline hover effect */
+.accent-underline {
+  position: relative;
+}
+
+.accent-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--text-primary);
+  transition: width 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+[dir="rtl"] .accent-underline::after {
+  left: auto;
+  right: 0;
+}
+
+.accent-underline:hover::after {
+  width: 100%;
+}
+
+/* CTA Button — solid */
+.btn-solid {
+  display: inline-block;
+  transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.btn-solid:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(27, 27, 25, 0.15);
+}
+
+.btn-solid:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(27, 27, 25, 0.1);
+  scale: 0.97;
+  transition: all 0.1s ease;
+}
+
+/* CTA Button — outline/ghost */
+.btn-outline {
+  display: inline-block;
+  transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.btn-outline:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.btn-outline:active {
+  transform: translateY(0);
+  scale: 0.97;
+  background: rgba(255, 255, 255, 0.15);
+  transition: all 0.1s ease;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(27, 27, 25, 0.2);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(27, 27, 25, 0.4);
+}
+
+/* Selection */
+::selection {
+  background: var(--text-primary);
+  color: var(--bg-primary);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .btn-solid:hover,
+  .btn-outline:hover {
+    transform: none;
+    box-shadow: none;
+  }
+}
