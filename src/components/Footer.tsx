@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { Instagram, Facebook } from "lucide-react";
 import ScrollReveal from "@/components/ScrollReveal";
 import type { Locale, Messages } from "@/lib/i18n";
@@ -45,9 +46,17 @@ export default function Footer({ locale, messages, navMessages }: FooterProps) {
             <div>
               <Link
                 href={`/${locale}`}
-                className="font-heading text-xl tracking-wide text-text-primary hover:opacity-55 transition-opacity duration-300"
+                className="flex items-center gap-2 hover:opacity-55 transition-opacity duration-300"
               >
-                {messages.name}
+                <Image
+                  src="/logo.svg"
+                  alt="Hen Cohen"
+                  width={28}
+                  height={30}
+                />
+                <span className="font-heading text-xl tracking-wide text-text-primary">
+                  {messages.name}
+                </span>
               </Link>
             </div>
 
@@ -103,6 +112,17 @@ export default function Footer({ locale, messages, navMessages }: FooterProps) {
         {/* Copyright */}
         <p className="text-center text-xs text-text-secondary">
           {messages.copyright}
+        </p>
+        <p className="text-center text-[10px] text-text-secondary/50 mt-3">
+          Built by{" "}
+          <a
+            href="https://www.fuzionwebz.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-text-secondary transition-colors duration-300"
+          >
+            Fuzion
+          </a>
         </p>
       </div>
     </footer>

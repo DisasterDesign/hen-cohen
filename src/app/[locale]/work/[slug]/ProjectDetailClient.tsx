@@ -1,8 +1,10 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { Play } from "lucide-react";
 import ScrollReveal from "@/components/ScrollReveal";
 import { projects, getProjectBySlug } from "@/data/projects";
 import { useReducedMotion } from "@/lib/useReducedMotion";
@@ -15,6 +17,46 @@ interface ProjectDetailClientProps {
 }
 
 const CINEMATIC_EASE = [0.25, 0.1, 0.25, 1] as const;
+
+function VideoEmbed({ embedUrl, thumbnail, title }: { embedUrl: string; thumbnail: string; title: string }) {
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  return (
+    <ScrollReveal className="mt-12">
+      <div className="relative w-full aspect-video overflow-hidden bg-[rgba(27,27,25,0.04)]">
+        {isPlaying ? (
+          <iframe
+            src={`${embedUrl}?autoplay=1&rel=0`}
+            title={title}
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+            className="absolute inset-0 w-full h-full"
+          />
+        ) : (
+          <button
+            onClick={() => setIsPlaying(true)}
+            className="absolute inset-0 w-full h-full group cursor-pointer"
+            aria-label={`Play ${title}`}
+          >
+            <Image
+              src={thumbnail}
+              alt={title}
+              fill
+              className="object-cover"
+              sizes="(max-width: 900px) 100vw, 900px"
+            />
+            <div className="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors duration-300" />
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-white/90 group-hover:bg-white group-hover:scale-110 transition-all duration-300 flex items-center justify-center shadow-lg">
+                <Play className="w-7 h-7 md:w-8 md:h-8 text-[#1B1B19] ml-1" fill="#1B1B19" />
+              </div>
+            </div>
+          </button>
+        )}
+      </div>
+    </ScrollReveal>
+  );
+}
 
 export default function ProjectDetailClient({ locale, slug, messages }: ProjectDetailClientProps) {
   const project = getProjectBySlug(slug);
@@ -97,17 +139,11 @@ export default function ProjectDetailClient({ locale, slug, messages }: ProjectD
 
         {/* Video embed */}
         {project.videoEmbedUrl && (
-          <ScrollReveal className="mt-12">
-            <div className="relative w-full aspect-video overflow-hidden bg-[rgba(27,27,25,0.04)]">
-              <iframe
-                src={project.videoEmbedUrl}
-                title={project.title[locale]}
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-                className="absolute inset-0 w-full h-full"
-              />
-            </div>
-          </ScrollReveal>
+          <VideoEmbed
+            embedUrl={project.videoEmbedUrl}
+            thumbnail={project.thumbnail}
+            title={project.title[locale]}
+          />
         )}
 
         {/* Credits */}

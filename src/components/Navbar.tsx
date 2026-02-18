@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import { Menu, X } from "lucide-react";
@@ -75,15 +76,21 @@ export default function Navbar({ locale, messages }: NavbarProps) {
           <div className="flex items-center justify-between h-16 md:h-20">
             <Link
               href={`/${locale}`}
-              className="font-heading text-lg md:text-xl tracking-wide transition-colors duration-300"
-              style={{
-                color:
-                  isScrolled || !isHomePage
-                    ? "var(--text-primary)"
-                    : "#FAFBF6",
-              }}
+              className="transition-colors duration-300"
             >
-              {locale === "he" ? "חן כהן" : "Hen Cohen"}
+              <Image
+                src="/logo.svg"
+                alt="Hen Cohen"
+                width={32}
+                height={35}
+                className="transition-all duration-300"
+                style={{
+                  filter:
+                    isScrolled || !isHomePage
+                      ? "none"
+                      : "invert(1)",
+                }}
+              />
             </Link>
 
             {/* Desktop links */}

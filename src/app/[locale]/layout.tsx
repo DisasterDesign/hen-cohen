@@ -44,6 +44,9 @@ export async function generateMetadata({
       type: "website",
       url: `${baseUrl}/${locale}`,
     },
+    icons: {
+      icon: "/logo.svg",
+    },
     robots: {
       index: true,
       follow: true,

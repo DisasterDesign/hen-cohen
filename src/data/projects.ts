@@ -145,6 +145,114 @@ export const projects: Project[] = [
       { he: "במאית, צלמת ועורכת: חן כהן", en: "Director, Cinematographer & Editor: Hen Cohen" },
     ],
   },
+  {
+    slug: "the-medical-mission",
+    title: {
+      he: "המשימה הרפואית: BFL מארחת מנתחים מהעולם למען ותיקים קטועי גפיים",
+      en: "The Medical Mission: BFL Hosting World Surgeons for Amputee Veterans",
+    },
+    description: {
+      he: "משימה רפואית בינלאומית למען ותיקים קטועי גפיים",
+      en: "An international medical mission for amputee veterans",
+    },
+    synopsis: {
+      he: "הסרט מתעד משימה רפואית ייחודית שבה ארגון BFL מארח מנתחים מובילים מרחבי העולם כדי לטפל בחיילים ותיקים קטועי גפיים. סיפור על תקווה, רפואה ושיתוף פעולה בינלאומי.",
+      en: "The film documents a unique medical mission in which BFL hosts leading surgeons from around the world to treat amputee veterans. A story of hope, medicine, and international collaboration.",
+    },
+    category: {
+      he: "סרט דוקומנטרי",
+      en: "Documentary Film",
+    },
+    year: 2025,
+    thumbnail: "https://img.youtube.com/vi/fao56-bSsd0/maxresdefault.jpg",
+    heroImage: "https://img.youtube.com/vi/fao56-bSsd0/maxresdefault.jpg",
+    videoEmbedUrl: "https://www.youtube.com/embed/fao56-bSsd0",
+    credits: [
+      { he: "במאית וצלמת: חן כהן", en: "Director & Cinematographer: Hen Cohen" },
+      { he: "עריכה: חן כהן", en: "Editing: Hen Cohen" },
+    ],
+  },
+  {
+    slug: "the-jewish-soul",
+    title: {
+      he: "הנשמה היהודית",
+      en: "The Jewish Soul",
+    },
+    description: {
+      he: "מסע אל עומק הנשמה היהודית",
+      en: "A journey into the depth of the Jewish soul",
+    },
+    synopsis: {
+      he: "הסרט מתעד מסע אל עומק הנשמה היהודית — חיבור בין מסורת, זהות ורוחניות. דרך דמויות ורגעים, הסרט חוקר את השאלות הגדולות של שייכות, אמונה ומשמעות.",
+      en: "The film documents a journey into the depth of the Jewish soul — a connection between tradition, identity, and spirituality. Through characters and moments, the film explores the big questions of belonging, faith, and meaning.",
+    },
+    category: {
+      he: "סרט דוקומנטרי",
+      en: "Documentary Film",
+    },
+    year: 2025,
+    thumbnail: "https://img.youtube.com/vi/BOs1EbcyPx0/maxresdefault.jpg",
+    heroImage: "https://img.youtube.com/vi/BOs1EbcyPx0/maxresdefault.jpg",
+    videoEmbedUrl: "https://www.youtube.com/embed/BOs1EbcyPx0",
+    credits: [
+      { he: "במאית וצלמת: חן כהן", en: "Director & Cinematographer: Hen Cohen" },
+      { he: "עריכה: חן כהן", en: "Editing: Hen Cohen" },
+    ],
+  },
+  {
+    slug: "bfl-vienna-marathon",
+    title: {
+      he: "BFL מרתון וינה",
+      en: "BFL Vienna Marathon",
+    },
+    description: {
+      he: "מרתון וינה עם לוחמי BFL",
+      en: "Vienna Marathon with BFL warriors",
+    },
+    synopsis: {
+      he: "הסרט מלווה את לוחמי BFL במרתון וינה — מסע של התגברות, נחישות וכוח רצון. מהאימונים ועד קו הסיום, הסרט מתעד את הרגעים שבהם הגוף והנפש נפגשים באתגר.",
+      en: "The film follows BFL warriors at the Vienna Marathon — a journey of overcoming, determination, and willpower. From training to the finish line, the film captures the moments where body and spirit meet the challenge.",
+    },
+    category: {
+      he: "סרט דוקומנטרי",
+      en: "Documentary Film",
+    },
+    year: 2025,
+    thumbnail: "https://img.youtube.com/vi/VDUG0eCMfuw/maxresdefault.jpg",
+    heroImage: "https://img.youtube.com/vi/VDUG0eCMfuw/maxresdefault.jpg",
+    videoEmbedUrl: "https://www.youtube.com/embed/VDUG0eCMfuw",
+    credits: [
+      { he: "במאית וצלמת: חן כהן", en: "Director & Cinematographer: Hen Cohen" },
+      { he: "עריכה: חן כהן", en: "Editing: Hen Cohen" },
+    ],
+  },
+  {
+    slug: "bfl-warriors-weightless",
+    title: {
+      he: "לוחמי BFL — חסרי משקל",
+      en: "BFL Warriors - Weightless",
+    },
+    description: {
+      he: "לוחמים שמתעלים מעל המגבלות",
+      en: "Warriors who rise above limitations",
+    },
+    synopsis: {
+      he: "הסרט עוקב אחרי לוחמי BFL בחוויה ייחודית של חוסר משקל — רגע שבו הגוף משתחרר מהמגבלות הפיזיות. סיפור על חופש, כוח פנימי והיכולת להתעלות מעל כל מכשול.",
+      en: "The film follows BFL warriors in a unique weightless experience — a moment where the body is freed from physical limitations. A story about freedom, inner strength, and the ability to rise above every obstacle.",
+    },
+    category: {
+      he: "סרט דוקומנטרי",
+      en: "Documentary Film",
+    },
+    year: 2025,
+    thumbnail: "https://img.youtube.com/vi/tBv7n15X9as/maxresdefault.jpg",
+    heroImage: "https://img.youtube.com/vi/tBv7n15X9as/maxresdefault.jpg",
+    videoEmbedUrl: "https://www.youtube.com/embed/tBv7n15X9as",
+    credits: [
+      { he: "במאית וצלמת: חן כהן", en: "Director & Cinematographer: Hen Cohen" },
+      { he: "עריכה: חן כהן", en: "Editing: Hen Cohen" },
+    ],
+  },
 ];
 
 export function getProjectBySlug(slug: string): Project | undefined {
