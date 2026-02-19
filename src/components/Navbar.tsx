@@ -106,13 +106,18 @@ export default function Navbar({ locale, messages }: NavbarProps) {
                 href={WHATSAPP_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[11px] tracking-[0.15em] px-5 py-2 border transition-all duration-300 hover:scale-[1.03]"
+                className="text-[12px] tracking-[0.15em] transition-colors nav-link group relative pb-1"
                 style={{
                   color: isScrolled || !isHomePage ? "var(--text-primary)" : "#FAFBF6",
-                  borderColor: isScrolled || !isHomePage ? "var(--text-primary)" : "rgba(250,251,246,0.8)",
                 }}
               >
                 {messages.contact}
+                <span
+                  className="absolute bottom-0 left-0 w-full h-px transition-colors duration-300"
+                  style={{
+                    backgroundColor: isScrolled || !isHomePage ? "var(--text-primary)" : "#FAFBF6",
+                  }}
+                />
               </a>
               {navLinks.map((link) => {
                 const href = `/${locale}${link.href}`;
@@ -209,9 +214,10 @@ export default function Navbar({ locale, messages }: NavbarProps) {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => setIsMobileOpen(false)}
-                className="text-[13px] tracking-[0.15em] px-8 py-3 border border-text-primary text-text-primary transition-colors"
+                className="font-heading text-2xl transition-colors text-text-secondary relative pb-1"
               >
                 {messages.contact}
+                <span className="absolute bottom-0 left-0 w-full h-px bg-text-primary" />
               </a>
             </motion.div>
             <motion.div variants={mobileLinkVariants}>
