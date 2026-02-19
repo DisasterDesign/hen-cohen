@@ -29,7 +29,7 @@ export default function AboutClient({ locale, messages }: AboutClientProps) {
           <ScrollReveal direction={locale === "he" ? "left" : "right"} duration={0.9}>
             <div className="relative aspect-[3/4] overflow-hidden bg-bg-primary">
               <Image
-                src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=800&h=1067&fit=crop"
+                src="/hen-cohen-portrait.jpg"
                 alt={messages.title}
                 fill
                 className="object-cover"
