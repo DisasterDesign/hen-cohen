@@ -102,6 +102,18 @@ export default function Navbar({ locale, messages }: NavbarProps) {
 
             {/* Desktop links */}
             <div className="hidden md:flex items-center gap-8">
+              <a
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[11px] tracking-[0.15em] px-5 py-2 border transition-all duration-300 hover:scale-[1.03]"
+                style={{
+                  color: isScrolled || !isHomePage ? "var(--text-primary)" : "#FAFBF6",
+                  borderColor: isScrolled || !isHomePage ? "var(--text-primary)" : "rgba(250,251,246,0.8)",
+                }}
+              >
+                {messages.contact}
+              </a>
               {navLinks.map((link) => {
                 const href = `/${locale}${link.href}`;
                 const isActive = link.href === ""
@@ -136,18 +148,6 @@ export default function Navbar({ locale, messages }: NavbarProps) {
                 locale={locale}
                 isOnHero={isHomePage && !isScrolled}
               />
-              <a
-                href={WHATSAPP_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-[11px] tracking-[0.15em] px-5 py-2 border transition-all duration-300 hover:scale-[1.03]"
-                style={{
-                  color: isScrolled || !isHomePage ? "var(--text-primary)" : "#FAFBF6",
-                  borderColor: isScrolled || !isHomePage ? "var(--text-primary)" : "rgba(250,251,246,0.8)",
-                }}
-              >
-                {messages.contact}
-              </a>
             </div>
 
             {/* Mobile hamburger */}
