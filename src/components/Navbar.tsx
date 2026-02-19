@@ -77,12 +77,18 @@ export default function Navbar({ locale, messages }: NavbarProps) {
             <Link
               href={`/${locale}`}
               className="transition-colors duration-300"
+              style={{
+                color:
+                  isScrolled || !isHomePage
+                    ? "var(--text-primary)"
+                    : "#FAFBF6",
+              }}
             >
               <Image
-                src="/logo.svg"
+                src="/logo-header.svg"
                 alt="Hen Cohen"
-                width={32}
-                height={35}
+                width={120}
+                height={49}
                 className="transition-all duration-300"
                 style={{
                   filter:

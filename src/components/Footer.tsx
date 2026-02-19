@@ -46,17 +46,14 @@ export default function Footer({ locale, messages, navMessages }: FooterProps) {
             <div>
               <Link
                 href={`/${locale}`}
-                className="flex items-center gap-2 hover:opacity-55 transition-opacity duration-300"
+                className="hover:opacity-55 transition-opacity duration-300"
               >
                 <Image
-                  src="/logo.svg"
+                  src="/logo-footer.svg"
                   alt="Hen Cohen"
-                  width={28}
-                  height={30}
+                  width={138}
+                  height={57}
                 />
-                <span className="font-heading text-xl tracking-wide text-text-primary">
-                  {messages.name}
-                </span>
               </Link>
             </div>
 
