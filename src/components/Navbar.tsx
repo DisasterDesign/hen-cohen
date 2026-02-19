@@ -73,7 +73,7 @@ export default function Navbar({ locale, messages }: NavbarProps) {
         }`}
       >
         <div className="mx-auto max-w-[1200px] px-6 md:px-8">
-          <div className="flex items-center justify-between h-16 md:h-20">
+          <div className="flex flex-row-reverse items-center justify-between h-16 md:h-20">
             <Link
               href={`/${locale}`}
               className="transition-colors duration-300"
