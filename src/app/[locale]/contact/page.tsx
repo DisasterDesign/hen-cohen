@@ -1,6 +1,27 @@
+import type { Metadata } from "next";
 import { getMessages, type Locale } from "@/lib/i18n";
 import ContactClient from "./ContactClient";
 import Footer from "@/components/Footer";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const isHe = locale === "he";
+
+  return {
+    title: isHe ? "צור קשר | חן כהן — צלמת ובמאית" : "Contact | Hen Cohen — Filmmaker",
+    description: isHe
+      ? "רוצים ליצור סרט דוקומנטרי או סרט תדמית? צרו קשר עם חן כהן — צלמת קולנוע, במאית דוקומנטרית ועורכת."
+      : "Want to create a documentary or branded film? Get in touch with Hen Cohen — filmmaker, cinematographer and editor.",
+    alternates: {
+      canonical: `https://hencohen.com/${locale}/contact`,
+      languages: { he: "https://hencohen.com/he/contact", en: "https://hencohen.com/en/contact" },
+    },
+  };
+}
 
 export default async function ContactPage({
   params,

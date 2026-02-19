@@ -21,12 +21,35 @@ export async function generateMetadata({
   if (!project) return { title: "Not Found" };
 
   const loc = locale as Locale;
+  const title = project.title[loc];
+  const description = project.synopsis[loc].substring(0, 160);
+  const baseUrl = "https://hencohen.com";
+
   return {
-    title: project.title[loc],
-    description: project.synopsis[loc].substring(0, 160),
+    title,
+    description,
+    keywords: loc === "he"
+      ? [title, "חן כהן", "סרט דוקומנטרי", project.category.he, "צלמת", "במאית"]
+      : [title, "Hen Cohen", "documentary film", project.category.en, "filmmaker", "cinematographer"],
+    alternates: {
+      canonical: `${baseUrl}/${locale}/work/${slug}`,
+      languages: {
+        he: `${baseUrl}/he/work/${slug}`,
+        en: `${baseUrl}/en/work/${slug}`,
+      },
+    },
     openGraph: {
-      title: project.title[loc],
-      images: [{ url: project.heroImage }],
+      title,
+      description,
+      type: "video.other",
+      url: `${baseUrl}/${locale}/work/${slug}`,
+      images: [{ url: project.heroImage, width: 1280, height: 720, alt: title }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [project.heroImage],
     },
   };
 }
