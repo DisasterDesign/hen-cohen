@@ -45,12 +45,14 @@ export default function CollaborationSection({ locale, messages }: Collaboration
         </div>
 
         <ScrollReveal delay={0.5} className="mt-14 text-center">
-          <Link
-            href={`/${locale}/contact`}
+          <a
+            href="https://wa.me/972502727599"
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-block text-xs tracking-[0.2em] text-text-secondary hover:text-text-primary transition-colors accent-underline pb-1"
           >
             {messages.cta}
-          </Link>
+          </a>
         </ScrollReveal>
       </div>
     </section>

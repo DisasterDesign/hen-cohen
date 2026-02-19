@@ -14,11 +14,13 @@ interface NavbarProps {
   messages: Messages["nav"];
 }
 
+const WHATSAPP_URL = "https://wa.me/972502727599";
+
 const navLinks = [
-  { key: "home", href: "" },
-  { key: "work", href: "/work" },
-  { key: "about", href: "/about" },
-  { key: "contact", href: "/contact" },
+  { key: "home", href: "", external: false },
+  { key: "work", href: "/work", external: false },
+  { key: "about", href: "/about", external: false },
+  { key: "contact", href: WHATSAPP_URL, external: true },
 ] as const;
 
 const mobileMenuVariants = {
@@ -102,21 +104,34 @@ export default function Navbar({ locale, messages }: NavbarProps) {
             {/* Desktop links */}
             <div className="hidden md:flex items-center gap-8">
               {navLinks.map((link) => {
-                const href = `/${locale}${link.href}`;
-                const isActive = link.href === ""
+                const href = link.external ? link.href : `/${locale}${link.href}`;
+                const isActive = !link.external && (link.href === ""
                   ? pathname === `/${locale}`
-                  : pathname.startsWith(href);
+                  : pathname.startsWith(href));
 
-                return (
+                const linkStyle = {
+                  color: isScrolled || !isHomePage
+                    ? isActive ? "var(--text-primary)" : "var(--text-secondary)"
+                    : isActive ? "#FAFBF6" : "rgba(255,255,255,0.65)",
+                };
+
+                return link.external ? (
+                  <a
+                    key={link.key}
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[12px] tracking-[0.15em] transition-colors nav-link"
+                    style={linkStyle}
+                  >
+                    {messages[link.key as keyof typeof messages]}
+                  </a>
+                ) : (
                   <Link
                     key={link.key}
                     href={href}
                     className="text-[12px] tracking-[0.15em] transition-colors nav-link"
-                    style={{
-                      color: isScrolled || !isHomePage
-                        ? isActive ? "var(--text-primary)" : "var(--text-secondary)"
-                        : isActive ? "#FAFBF6" : "rgba(255,255,255,0.65)",
-                    }}
+                    style={linkStyle}
                   >
                     {messages[link.key as keyof typeof messages]}
                   </Link>
@@ -172,21 +187,33 @@ export default function Navbar({ locale, messages }: NavbarProps) {
             className="fixed inset-0 z-40 bg-bg-primary flex flex-col items-center justify-center gap-8"
           >
             {navLinks.map((link) => {
-              const href = `/${locale}${link.href}`;
-              const isActive = link.href === ""
+              const href = link.external ? link.href : `/${locale}${link.href}`;
+              const isActive = !link.external && (link.href === ""
                 ? pathname === `/${locale}`
-                : pathname.startsWith(href);
+                : pathname.startsWith(href));
               return (
                 <motion.div key={link.key} variants={mobileLinkVariants}>
-                  <Link
-                    href={href}
-                    onClick={() => setIsMobileOpen(false)}
-                    className={`font-heading text-2xl transition-colors ${
-                      isActive ? "text-text-primary" : "text-text-secondary"
-                    }`}
-                  >
-                    {messages[link.key as keyof typeof messages]}
-                  </Link>
+                  {link.external ? (
+                    <a
+                      href={href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() => setIsMobileOpen(false)}
+                      className="font-heading text-2xl transition-colors text-text-secondary"
+                    >
+                      {messages[link.key as keyof typeof messages]}
+                    </a>
+                  ) : (
+                    <Link
+                      href={href}
+                      onClick={() => setIsMobileOpen(false)}
+                      className={`font-heading text-2xl transition-colors ${
+                        isActive ? "text-text-primary" : "text-text-secondary"
+                      }`}
+                    >
+                      {messages[link.key as keyof typeof messages]}
+                    </Link>
+                  )}
                 </motion.div>
               );
             })}

@@ -123,12 +123,14 @@ export default function HeroSection({ locale, messages }: HeroSectionProps) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: reduced ? 0.2 : 0.6, delay: 1.35, ease: CINEMATIC_EASE }}
           >
-            <Link
-              href={`/${locale}/contact`}
+            <a
+              href="https://wa.me/972502727599"
+              target="_blank"
+              rel="noopener noreferrer"
               className="btn-solid px-8 py-3 bg-[#FAFBF6] text-[#1B1B19] text-xs tracking-[0.2em] shadow-[0_2px_16px_rgba(0,0,0,0.4)]"
             >
               {messages.ctaContact}
-            </Link>
+            </a>
           </motion.div>
         </div>
       </div>

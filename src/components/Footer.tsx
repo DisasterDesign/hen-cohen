@@ -12,11 +12,13 @@ interface FooterProps {
   navMessages: Messages["nav"];
 }
 
+const WHATSAPP_URL = "https://wa.me/972502727599";
+
 const navLinks = [
-  { key: "home", href: "" },
-  { key: "work", href: "/work" },
-  { key: "about", href: "/about" },
-  { key: "contact", href: "/contact" },
+  { key: "home", href: "", external: false },
+  { key: "work", href: "/work", external: false },
+  { key: "about", href: "/about", external: false },
+  { key: "contact", href: WHATSAPP_URL, external: true },
 ] as const;
 
 function WhatsAppIcon({ size = 20 }: { size?: number }) {
@@ -59,15 +61,27 @@ export default function Footer({ locale, messages, navMessages }: FooterProps) {
 
             {/* Navigation */}
             <div className="flex items-center gap-6">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.key}
-                  href={`/${locale}${link.href}`}
-                  className="text-[11px] tracking-[0.15em] text-text-secondary hover:text-text-primary transition-colors duration-300 nav-link"
-                >
-                  {navMessages[link.key as keyof typeof navMessages]}
-                </Link>
-              ))}
+              {navLinks.map((link) =>
+                link.external ? (
+                  <a
+                    key={link.key}
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[11px] tracking-[0.15em] text-text-secondary hover:text-text-primary transition-colors duration-300 nav-link"
+                  >
+                    {navMessages[link.key as keyof typeof navMessages]}
+                  </a>
+                ) : (
+                  <Link
+                    key={link.key}
+                    href={`/${locale}${link.href}`}
+                    className="text-[11px] tracking-[0.15em] text-text-secondary hover:text-text-primary transition-colors duration-300 nav-link"
+                  >
+                    {navMessages[link.key as keyof typeof navMessages]}
+                  </Link>
+                )
+              )}
             </div>
 
             {/* Social icons */}
