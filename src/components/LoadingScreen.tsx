@@ -39,7 +39,7 @@ export default function LoadingScreen() {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        background: "#1B1B19",
+        background: "#000000",
         opacity: phase === "fade" ? 0 : 1,
         transition: "opacity 0.6s cubic-bezier(0.25, 0.1, 0.25, 1)",
         pointerEvents: phase === "fade" ? "none" : "all",
