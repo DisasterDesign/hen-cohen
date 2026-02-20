@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { locales, getMessages, getDirection, type Locale } from "@/lib/i18n";
-import { quicksand, heebo } from "@/lib/fonts";
+// Font loaded via @font-face in globals.css
 import Navbar from "@/components/Navbar";
 import PageTransition from "@/components/PageTransition";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
@@ -104,7 +104,7 @@ export default async function LocaleLayout({
   const direction = getDirection(loc);
   const messages = getMessages(loc);
 
-  const fontClasses = `${quicksand.variable} ${heebo.variable}`;
+  const fontClasses = "";
   const baseUrl = "https://hencohen.com";
 
   const jsonLd = {
