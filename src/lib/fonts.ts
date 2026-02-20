@@ -1,2 +1,9 @@
-// FrankRuehl AAA is loaded via @font-face in globals.css
-// No Google Fonts needed — keeping this file for potential future use
+import { Frank_Ruhl_Libre } from "next/font/google";
+
+// Latin companion for FrankRuehl AAA (Hebrew-only local font)
+export const frankRuhlLibre = Frank_Ruhl_Libre({
+  subsets: ["latin"],
+  weight: ["400", "500", "700"],
+  variable: "--font-frank-ruhl-libre",
+  display: "swap",
+});

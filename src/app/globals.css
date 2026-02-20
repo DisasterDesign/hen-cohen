@@ -49,15 +49,21 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* FrankRuehl AAA everywhere */
-[dir="ltr"],
-[dir="rtl"] {
-  font-family: "FrankRuehl AAA", system-ui, sans-serif;
+/* FrankRuehl AAA (Hebrew) + Frank Ruhl Libre (Latin) */
+[dir="ltr"] {
+  font-family: var(--font-frank-ruhl-libre), system-ui, serif;
 }
 
-.font-heading,
+[dir="rtl"] {
+  font-family: "FrankRuehl AAA", var(--font-frank-ruhl-libre), system-ui, serif;
+}
+
+.font-heading {
+  font-family: var(--font-frank-ruhl-libre), system-ui, serif;
+}
+
 [dir="rtl"] .font-heading {
-  font-family: "FrankRuehl AAA", system-ui, sans-serif;
+  font-family: "FrankRuehl AAA", var(--font-frank-ruhl-libre), system-ui, serif;
 }
 
 /* Nav link underline — slides in from left */
