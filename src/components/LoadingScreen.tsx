@@ -46,13 +46,13 @@ export default function LoadingScreen() {
       }}
     >
       <svg
-        width="488"
-        height="293"
+        width="585"
+        height="351"
         viewBox="0 0 195 117"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         style={{
-          maxWidth: "80vw",
+          maxWidth: "85vw",
           height: "auto",
         }}
       >

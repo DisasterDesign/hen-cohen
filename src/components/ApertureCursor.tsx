@@ -62,6 +62,22 @@ export default function ApertureCursor() {
         willChange: "transform",
       }}
     >
+      {/* Closed state: solid dot */}
+      <div
+        style={{
+          position: "absolute",
+          top: "50%",
+          left: "50%",
+          width: 8,
+          height: 8,
+          borderRadius: "50%",
+          background: "#1B1B19",
+          transform: "translate(-50%, -50%)",
+          transition: "opacity 0.25s cubic-bezier(0.25, 0.1, 0.25, 1)",
+          opacity: isHovering ? 1 : 0,
+        }}
+      />
+      {/* Open state: aperture SVG */}
       <svg
         width={size}
         height={size}
@@ -69,9 +85,9 @@ export default function ApertureCursor() {
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         style={{
-          transition: "transform 0.3s cubic-bezier(0.25, 0.1, 0.25, 1)",
+          transition: "transform 0.35s cubic-bezier(0.25, 0.1, 0.25, 1)",
           transformOrigin: "center center",
-          transform: isHovering ? "scale(0.22)" : "scale(1)",
+          transform: isHovering ? "scale(0)" : "scale(1)",
         }}
       >
         <path

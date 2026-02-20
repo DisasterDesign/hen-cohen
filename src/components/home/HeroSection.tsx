@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Link from "next/link";
 import { useReducedMotion } from "@/lib/useReducedMotion";
@@ -55,6 +55,7 @@ function WordReveal({ text, delay = 0 }: { text: string; delay?: number }) {
 export default function HeroSection({ locale, messages }: HeroSectionProps) {
   const reduced = useReducedMotion();
   const [scrollIndicatorVisible, setScrollIndicatorVisible] = useState(true);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   const { scrollY } = useScroll();
   const parallaxY = useTransform(scrollY, [0, 600], [0, 60]);
@@ -67,6 +68,31 @@ export default function HeroSection({ locale, messages }: HeroSectionProps) {
     return unsubscribe;
   }, [scrollY]);
 
+  // Delay video playback until after loading screen finishes
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const alreadyShown = sessionStorage.getItem("loading-shown");
+    if (alreadyShown === "1") {
+      // Loading screen was already shown in a previous page visit this session,
+      // or was just set by LoadingScreen — check if loading is still active
+      const loadingEl = document.querySelector(".loading-screen");
+      if (!loadingEl) {
+        // No loading screen present, play immediately
+        video.play();
+        return;
+      }
+    }
+
+    // Wait for loading animation to finish (3s animation + 0.6s fade)
+    const timer = setTimeout(() => {
+      video.play();
+    }, 3600);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <section className="relative h-screen w-full overflow-hidden">
       {/* Background video — Ken Burns zoom-out + parallax */}
@@ -78,7 +104,7 @@ export default function HeroSection({ locale, messages }: HeroSectionProps) {
         style={reduced ? {} : { y: parallaxY }}
       >
         <video
-          autoPlay
+          ref={videoRef}
           muted
           loop
           playsInline
