@@ -154,6 +154,12 @@ body {
   color: var(--bg-primary);
 }
 
+/* Custom aperture cursor — hide default cursor */
+.custom-cursor-active,
+.custom-cursor-active * {
+  cursor: none !important;
+}
+
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   html {
