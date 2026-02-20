@@ -3,9 +3,18 @@
 import { useEffect, useState } from "react";
 
 export default function LoadingScreen() {
-  const [phase, setPhase] = useState<"drawing" | "hold" | "fade" | "done">("drawing");
+  const [phase, setPhase] = useState<"check" | "drawing" | "hold" | "fade" | "done">("check");
 
   useEffect(() => {
+    // Only show on first visit per session
+    if (sessionStorage.getItem("loading-shown")) {
+      setPhase("done");
+      return;
+    }
+
+    sessionStorage.setItem("loading-shown", "1");
+    setPhase("drawing");
+
     // 2s draw → 1s hold → 0.6s fade → done
     const holdTimer = setTimeout(() => setPhase("hold"), 2000);
     const fadeTimer = setTimeout(() => setPhase("fade"), 3000);
@@ -18,7 +27,7 @@ export default function LoadingScreen() {
     };
   }, []);
 
-  if (phase === "done") return null;
+  if (phase === "done" || phase === "check") return null;
 
   return (
     <div
@@ -37,13 +46,13 @@ export default function LoadingScreen() {
       }}
     >
       <svg
-        width="195"
-        height="117"
+        width="488"
+        height="293"
         viewBox="0 0 195 117"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         style={{
-          width: "min(195px, 50vw)",
+          maxWidth: "80vw",
           height: "auto",
         }}
       >
