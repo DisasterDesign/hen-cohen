@@ -5,6 +5,7 @@ import Navbar from "@/components/Navbar";
 import PageTransition from "@/components/PageTransition";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 import ApertureCursor from "@/components/ApertureCursor";
+import LoadingScreen from "@/components/LoadingScreen";
 import "../globals.css";
 
 export function generateStaticParams() {
@@ -159,6 +160,7 @@ export default async function LocaleLayout({
         </PageTransition>
         <FloatingWhatsApp />
         <ApertureCursor />
+        <LoadingScreen />
       </body>
     </html>
   );
