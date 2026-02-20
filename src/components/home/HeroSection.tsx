@@ -109,7 +109,7 @@ export default function HeroSection({ locale, messages }: HeroSectionProps) {
           loop
           playsInline
           className="absolute inset-0 w-full h-full object-cover"
-          poster="https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=1920&q=80"
+          poster="/videos/hero-poster.jpg"
         >
           <source src="/videos/hero-bg.mp4" type="video/mp4" />
         </video>
