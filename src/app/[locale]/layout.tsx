@@ -148,8 +148,8 @@ export default async function LocaleLayout({
   };
 
   return (
-    <html lang={locale} dir={direction}>
-      <body className={`${fontClasses} antialiased`}>
+    <html lang={locale} dir={direction} className={fontClasses}>
+      <body className="antialiased">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
