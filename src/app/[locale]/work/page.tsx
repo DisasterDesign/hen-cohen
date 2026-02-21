@@ -12,10 +12,10 @@ export async function generateMetadata({
   const isHe = locale === "he";
 
   return {
-    title: isHe ? "עבודות נבחרות | סרטים דוקומנטריים — חן כהן" : "Selected Work | Documentary Films — Hen Cohen",
+    title: isHe ? "עבודות נבחרות | סרטים דוקומנטריים — חן אופיר כהן" : "Selected Work | Documentary Films — Hen Ofir Cohen",
     description: isHe
-      ? "פרויקטים נבחרים של חן כהן — סרטים דוקומנטריים, סרטי תדמית לארגונים ומלכ״רים, וסיפורים אנושיים למותגים."
-      : "Selected projects by Hen Cohen — documentary films, organizational storytelling, and branded human stories.",
+      ? "פרויקטים נבחרים של חן אופיר כהן — סרטים דוקומנטריים, סרטי תדמית לארגונים ומלכ״רים, וסיפורים אנושיים למותגים."
+      : "Selected projects by Hen Ofir Cohen — documentary films, organizational storytelling, and branded human stories.",
     alternates: {
       canonical: `https://hencohen.com/${locale}/work`,
       languages: { he: "https://hencohen.com/he/work", en: "https://hencohen.com/en/work" },

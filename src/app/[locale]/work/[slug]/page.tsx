@@ -29,8 +29,8 @@ export async function generateMetadata({
     title,
     description,
     keywords: loc === "he"
-      ? [title, "חן כהן", "סרט דוקומנטרי", project.category.he, "צלמת", "במאית"]
-      : [title, "Hen Cohen", "documentary film", project.category.en, "filmmaker", "cinematographer"],
+      ? [title, "חן אופיר כהן", "סרט דוקומנטרי", project.category.he, "צלמת", "במאית"]
+      : [title, "Hen Ofir Cohen", "documentary film", project.category.en, "filmmaker", "cinematographer"],
     alternates: {
       canonical: `${baseUrl}/${locale}/work/${slug}`,
       languages: {

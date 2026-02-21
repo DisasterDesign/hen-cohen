@@ -12,10 +12,10 @@ export async function generateMetadata({
   const isHe = locale === "he";
 
   return {
-    title: isHe ? "אודות חן כהן | צלמת קולנוע ובמאית דוקומנטרית" : "About Hen Cohen | Documentary Filmmaker & Cinematographer",
+    title: isHe ? "אודות חן אופיר כהן | צלמת קולנוע ובמאית דוקומנטרית" : "About Hen Ofir Cohen | Documentary Filmmaker & Cinematographer",
     description: isHe
-      ? "חן כהן — צלמת קולנוע, במאית דוקומנטרית ועורכת. מעורבת בכל שלבי ההפקה, מהבימוי ועד העריכה. סרטים שנבנים מתוך קשב וכנות."
-      : "Hen Cohen — filmmaker, cinematographer and editor involved in every stage of production. Documentary films crafted with care and honesty.",
+      ? "חן אופיר כהן — צלמת קולנוע, במאית דוקומנטרית ועורכת. מעורבת בכל שלבי ההפקה, מהבימוי ועד העריכה. סרטים שנבנים מתוך קשב וכנות."
+      : "Hen Ofir Cohen — filmmaker, cinematographer and editor involved in every stage of production. Documentary films crafted with care and honesty.",
     alternates: {
       canonical: `https://hencohen.com/${locale}/about`,
       languages: { he: "https://hencohen.com/he/about", en: "https://hencohen.com/en/about" },

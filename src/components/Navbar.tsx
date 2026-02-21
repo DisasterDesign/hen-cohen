@@ -87,7 +87,7 @@ export default function Navbar({ locale, messages }: NavbarProps) {
             >
               <Image
                 src="/logo-header.svg"
-                alt="Hen Cohen"
+                alt="Hen Ofir Cohen"
                 width={120}
                 height={49}
                 className="transition-all duration-300"

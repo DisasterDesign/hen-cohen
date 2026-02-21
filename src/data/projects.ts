@@ -35,8 +35,8 @@ export const projects: Project[] = [
     heroImage: "https://img.youtube.com/vi/GzucmfaxtoA/maxresdefault.jpg",
     videoEmbedUrl: "https://www.youtube.com/embed/GzucmfaxtoA",
     credits: [
-      { he: "במאית וצלמת: חן כהן", en: "Director & Cinematographer: Hen Cohen" },
-      { he: "עריכה: חן כהן", en: "Editing: Hen Cohen" },
+      { he: "במאית וצלמת: חן אופיר כהן", en: "Director & Cinematographer: Hen Ofir Cohen" },
+      { he: "עריכה: חן אופיר כהן", en: "Editing: Hen Ofir Cohen" },
     ],
   },
   {
@@ -62,8 +62,8 @@ export const projects: Project[] = [
     heroImage: "https://img.youtube.com/vi/uXQ5kOPrT_o/maxresdefault.jpg",
     videoEmbedUrl: "https://www.youtube.com/embed/uXQ5kOPrT_o",
     credits: [
-      { he: "במאית וצלמת: חן כהן", en: "Director & Cinematographer: Hen Cohen" },
-      { he: "עריכה: חן כהן", en: "Editing: Hen Cohen" },
+      { he: "במאית וצלמת: חן אופיר כהן", en: "Director & Cinematographer: Hen Ofir Cohen" },
+      { he: "עריכה: חן אופיר כהן", en: "Editing: Hen Ofir Cohen" },
     ],
   },
   {
@@ -89,7 +89,7 @@ export const projects: Project[] = [
     heroImage: "https://img.youtube.com/vi/WtJ1QdWV7Tg/maxresdefault.jpg",
     videoEmbedUrl: "https://www.youtube.com/embed/WtJ1QdWV7Tg",
     credits: [
-      { he: "צילום ועריכה: חן כהן", en: "Cinematography & Editing: Hen Cohen" },
+      { he: "צילום ועריכה: חן אופיר כהן", en: "Cinematography & Editing: Hen Ofir Cohen" },
     ],
   },
   {
@@ -115,8 +115,8 @@ export const projects: Project[] = [
     heroImage: "https://img.youtube.com/vi/8ClVr2IFkrk/maxresdefault.jpg",
     videoEmbedUrl: "https://www.youtube.com/embed/8ClVr2IFkrk",
     credits: [
-      { he: "במאית וצלמת: חן כהן", en: "Director & Cinematographer: Hen Cohen" },
-      { he: "עריכה: חן כהן", en: "Editing: Hen Cohen" },
+      { he: "במאית וצלמת: חן אופיר כהן", en: "Director & Cinematographer: Hen Ofir Cohen" },
+      { he: "עריכה: חן אופיר כהן", en: "Editing: Hen Ofir Cohen" },
     ],
   },
   {
@@ -142,7 +142,7 @@ export const projects: Project[] = [
     heroImage: "https://img.youtube.com/vi/3K37gbk25oY/maxresdefault.jpg",
     videoEmbedUrl: "https://www.youtube.com/embed/3K37gbk25oY",
     credits: [
-      { he: "במאית, צלמת ועורכת: חן כהן", en: "Director, Cinematographer & Editor: Hen Cohen" },
+      { he: "במאית, צלמת ועורכת: חן אופיר כהן", en: "Director, Cinematographer & Editor: Hen Ofir Cohen" },
     ],
   },
   {
@@ -168,8 +168,8 @@ export const projects: Project[] = [
     heroImage: "https://img.youtube.com/vi/fao56-bSsd0/maxresdefault.jpg",
     videoEmbedUrl: "https://www.youtube.com/embed/fao56-bSsd0",
     credits: [
-      { he: "במאית וצלמת: חן כהן", en: "Director & Cinematographer: Hen Cohen" },
-      { he: "עריכה: חן כהן", en: "Editing: Hen Cohen" },
+      { he: "במאית וצלמת: חן אופיר כהן", en: "Director & Cinematographer: Hen Ofir Cohen" },
+      { he: "עריכה: חן אופיר כהן", en: "Editing: Hen Ofir Cohen" },
     ],
   },
   {
@@ -195,8 +195,8 @@ export const projects: Project[] = [
     heroImage: "https://img.youtube.com/vi/BOs1EbcyPx0/maxresdefault.jpg",
     videoEmbedUrl: "https://www.youtube.com/embed/BOs1EbcyPx0",
     credits: [
-      { he: "במאית וצלמת: חן כהן", en: "Director & Cinematographer: Hen Cohen" },
-      { he: "עריכה: חן כהן", en: "Editing: Hen Cohen" },
+      { he: "במאית וצלמת: חן אופיר כהן", en: "Director & Cinematographer: Hen Ofir Cohen" },
+      { he: "עריכה: חן אופיר כהן", en: "Editing: Hen Ofir Cohen" },
     ],
   },
   {
@@ -222,8 +222,8 @@ export const projects: Project[] = [
     heroImage: "https://img.youtube.com/vi/VDUG0eCMfuw/maxresdefault.jpg",
     videoEmbedUrl: "https://www.youtube.com/embed/VDUG0eCMfuw",
     credits: [
-      { he: "במאית וצלמת: חן כהן", en: "Director & Cinematographer: Hen Cohen" },
-      { he: "עריכה: חן כהן", en: "Editing: Hen Cohen" },
+      { he: "במאית וצלמת: חן אופיר כהן", en: "Director & Cinematographer: Hen Ofir Cohen" },
+      { he: "עריכה: חן אופיר כהן", en: "Editing: Hen Ofir Cohen" },
     ],
   },
   {
@@ -249,8 +249,8 @@ export const projects: Project[] = [
     heroImage: "https://img.youtube.com/vi/tBv7n15X9as/maxresdefault.jpg",
     videoEmbedUrl: "https://www.youtube.com/embed/tBv7n15X9as",
     credits: [
-      { he: "במאית וצלמת: חן כהן", en: "Director & Cinematographer: Hen Cohen" },
-      { he: "עריכה: חן כהן", en: "Editing: Hen Cohen" },
+      { he: "במאית וצלמת: חן אופיר כהן", en: "Director & Cinematographer: Hen Ofir Cohen" },
+      { he: "עריכה: חן אופיר כהן", en: "Editing: Hen Ofir Cohen" },
     ],
   },
 ];
