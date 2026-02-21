@@ -1,9 +1,8 @@
-import { Frank_Ruhl_Libre } from "next/font/google";
+import { Rubik } from "next/font/google";
 
-// Latin companion for FrankRuehl AAA (Hebrew-only local font)
-export const frankRuhlLibre = Frank_Ruhl_Libre({
-  subsets: ["latin"],
-  weight: ["400", "500", "700"],
-  variable: "--font-frank-ruhl-libre",
+export const rubik = Rubik({
+  subsets: ["latin", "hebrew"],
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-rubik",
   display: "swap",
 });

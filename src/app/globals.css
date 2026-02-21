@@ -1,22 +1,5 @@
 @import "tailwindcss";
 
-/* FrankRuehl AAA — local web font */
-@font-face {
-  font-family: "FrankRuehl AAA";
-  src: url("/fonts/frankruehl-aaa-regular.woff2") format("woff2");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "FrankRuehl AAA";
-  src: url("/fonts/frankruehl-aaa-bold.woff2") format("woff2");
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
 :root {
   --bg-primary: #FAFBF6;
   --bg-dark: #1B1B19;
@@ -49,21 +32,15 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* FrankRuehl AAA (Hebrew) + Frank Ruhl Libre (Latin) */
-[dir="ltr"] {
-  font-family: var(--font-frank-ruhl-libre), system-ui, serif;
-}
-
+/* Rubik — Hebrew + Latin */
+[dir="ltr"],
 [dir="rtl"] {
-  font-family: "FrankRuehl AAA", var(--font-frank-ruhl-libre), system-ui, serif;
+  font-family: var(--font-rubik), system-ui, sans-serif;
 }
 
-.font-heading {
-  font-family: var(--font-frank-ruhl-libre), system-ui, serif;
-}
-
+.font-heading,
 [dir="rtl"] .font-heading {
-  font-family: "FrankRuehl AAA", var(--font-frank-ruhl-libre), system-ui, serif;
+  font-family: var(--font-rubik), system-ui, sans-serif;
 }
 
 /* Nav link underline — slides in from left */

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { locales, getMessages, getDirection, type Locale } from "@/lib/i18n";
-import { frankRuhlLibre } from "@/lib/fonts";
+import { rubik } from "@/lib/fonts";
 import Navbar from "@/components/Navbar";
 import PageTransition from "@/components/PageTransition";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
@@ -104,7 +104,7 @@ export default async function LocaleLayout({
   const direction = getDirection(loc);
   const messages = getMessages(loc);
 
-  const fontClasses = frankRuhlLibre.variable;
+  const fontClasses = rubik.variable;
   const baseUrl = "https://hencohen.com";
 
   const jsonLd = {
