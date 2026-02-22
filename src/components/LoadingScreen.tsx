@@ -1,32 +1,12 @@
 "use client";
 
-import { useEffect, useState, useRef, useCallback } from "react";
+import { useEffect, useState, useRef } from "react";
 
 export default function LoadingScreen() {
   const [phase, setPhase] = useState<
     "check" | "drawing" | "fill" | "hold" | "fade" | "done"
   >("check");
   const pathRef = useRef<SVGPathElement>(null);
-
-  const animatePath = useCallback(() => {
-    const path = pathRef.current;
-    if (!path) return;
-
-    const length = path.getTotalLength();
-
-    // Set initial state: stroke visible but offset, no fill
-    path.style.strokeDasharray = `${length}`;
-    path.style.strokeDashoffset = `${length}`;
-    path.style.fill = "transparent";
-
-    // Force reflow
-    path.getBoundingClientRect();
-
-    // Animate stroke drawing
-    path.style.transition =
-      "stroke-dashoffset 2.5s cubic-bezier(0.65, 0, 0.35, 1), fill 0.8s ease";
-    path.style.strokeDashoffset = "0";
-  }, []);
 
   useEffect(() => {
     if (sessionStorage.getItem("loading-shown")) {
@@ -36,37 +16,49 @@ export default function LoadingScreen() {
 
     sessionStorage.setItem("loading-shown", "1");
     setPhase("drawing");
+
+    // Start stroke animation on next frame
+    requestAnimationFrame(() => {
+      const path = pathRef.current;
+      if (!path) return;
+
+      const length = path.getTotalLength();
+      path.style.strokeDasharray = `${length}`;
+      path.style.strokeDashoffset = `${length}`;
+      path.style.fill = "transparent";
+
+      // Force reflow
+      path.getBoundingClientRect();
+
+      // Animate stroke + prepare fill transition
+      path.style.transition =
+        "stroke-dashoffset 2.5s cubic-bezier(0.65, 0, 0.35, 1), fill 0.8s ease";
+      path.style.strokeDashoffset = "0";
+    });
+
+    // All timers in one place so they never get cleared by phase changes
+    const fillTimer = setTimeout(() => setPhase("fill"), 2500);
+    const holdTimer = setTimeout(() => setPhase("hold"), 3300);
+    const fadeTimer = setTimeout(() => setPhase("fade"), 3800);
+    const doneTimer = setTimeout(() => setPhase("done"), 4400);
+
+    return () => {
+      clearTimeout(fillTimer);
+      clearTimeout(holdTimer);
+      clearTimeout(fadeTimer);
+      clearTimeout(doneTimer);
+    };
   }, []);
 
+  // Handle fill-in separately
   useEffect(() => {
-    if (phase === "drawing") {
-      // Start the stroke animation
-      requestAnimationFrame(animatePath);
-
-      // After stroke finishes (2.5s), fill in
-      const fillTimer = setTimeout(() => setPhase("fill"), 2500);
-      // Hold for 0.8s after fill
-      const holdTimer = setTimeout(() => setPhase("hold"), 3300);
-      // Fade out
-      const fadeTimer = setTimeout(() => setPhase("fade"), 3800);
-      // Done
-      const doneTimer = setTimeout(() => setPhase("done"), 4400);
-
-      return () => {
-        clearTimeout(fillTimer);
-        clearTimeout(holdTimer);
-        clearTimeout(fadeTimer);
-        clearTimeout(doneTimer);
-      };
-    }
-
     if (phase === "fill") {
       const path = pathRef.current;
       if (path) {
         path.style.fill = "black";
       }
     }
-  }, [phase, animatePath]);
+  }, [phase]);
 
   if (phase === "done" || phase === "check") return null;
 
@@ -90,7 +82,7 @@ export default function LoadingScreen() {
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         style={{
-          width: "min(70vw, 700px)",
+          width: "min(140vw, 1400px)",
           height: "auto",
         }}
       >
