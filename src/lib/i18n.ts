@@ -1,8 +1,8 @@
 import heMessages from "../../messages/he.json";
 import enMessages from "../../messages/en.json";
 
-export const locales = ["en", "he"] as const;
-export const defaultLocale = "en";
+export const locales = ["he", "en"] as const;
+export const defaultLocale = "he";
 
 export type Locale = (typeof locales)[number];
 
