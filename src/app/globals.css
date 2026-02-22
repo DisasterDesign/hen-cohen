@@ -148,43 +148,7 @@ body {
   color: var(--bg-primary);
 }
 
-/* Loading screen — SVG path draw animation */
-@keyframes draw {
-  from { stroke-dashoffset: var(--path-length); }
-  to { stroke-dashoffset: 0; }
-}
-
-.loading-path {
-  stroke-dasharray: var(--path-length);
-  stroke-dashoffset: var(--path-length);
-  animation: draw 2s cubic-bezier(0.65, 0, 0.35, 1) forwards;
-}
-
-/* Perimeters: body ≈ 590, inner rect ≈ 182, side rect ≈ 119, top rect ≈ 39, circle ≈ 132 */
-.loading-path-1 {
-  --path-length: 590;
-  animation-delay: 0s;
-}
-
-.loading-path-2 {
-  --path-length: 182;
-  animation-delay: 0.3s;
-}
-
-.loading-path-3 {
-  --path-length: 119;
-  animation-delay: 0.15s;
-}
-
-.loading-path-4 {
-  --path-length: 39;
-  animation-delay: 0.1s;
-}
-
-.loading-path-5 {
-  --path-length: 132;
-  animation-delay: 0.5s;
-}
+/* Loading screen — stroke draw animation handled via JS (getTotalLength) */
 
 /* Custom aperture cursor — hide default cursor */
 .custom-cursor-active,

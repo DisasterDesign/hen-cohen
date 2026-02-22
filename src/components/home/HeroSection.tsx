@@ -85,10 +85,10 @@ export default function HeroSection({ locale, messages }: HeroSectionProps) {
       }
     }
 
-    // Wait for loading animation to finish (3s animation + 0.6s fade)
+    // Wait for loading animation to finish (3.8s animation + 0.6s fade)
     const timer = setTimeout(() => {
       video.play();
-    }, 3600);
+    }, 4400);
 
     return () => clearTimeout(timer);
   }, []);
