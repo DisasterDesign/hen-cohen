@@ -58,7 +58,7 @@ export async function generateMetadata({
         : "Documentary filmmaker, cinematographer and editor. Documentary films, nonprofit storytelling and branded human stories.",
       images: [
         {
-          url: "/videos/hero-poster.jpg",
+          url: "https://hencohen.com/videos/hero-poster.jpg?v=2",
           width: 1920,
           height: 1080,
           alt: isHe ? "חן אופיר כהן — צלמת ובמאית דוקומנטרית" : "Chen Ofir Cohen — Documentary Filmmaker",
@@ -73,7 +73,7 @@ export async function generateMetadata({
       description: isHe
         ? "צלמת קולנוע, במאית דוקומנטרית ועורכת. סרטים שנבנים מתוך קשב וכנות."
         : "Documentary filmmaker, cinematographer and editor. Thoughtful films shaped with care and honesty.",
-      images: ["/videos/hero-poster.jpg"],
+      images: ["https://hencohen.com/videos/hero-poster.jpg?v=2"],
     },
     icons: {
       icon: "/fabicon.svg",
@@ -123,7 +123,7 @@ export default async function LocaleLayout({
           "https://www.instagram.com/hen_ofir_cohen/",
           "https://www.facebook.com/hen.cohen.376",
         ],
-        image: "/videos/hero-poster.jpg",
+        image: "https://hencohen.com/videos/hero-poster.jpg?v=2",
       },
       {
         "@type": "WebSite",
