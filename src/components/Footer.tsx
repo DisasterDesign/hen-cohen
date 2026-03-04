@@ -52,7 +52,7 @@ export default function Footer({ locale, messages, navMessages }: FooterProps) {
               >
                 <Image
                   src="/logo-footer.svg"
-                  alt="Hen Ofir Cohen"
+                  alt="Chen Ofir Cohen"
                   width={138}
                   height={57}
                 />

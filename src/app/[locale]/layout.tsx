@@ -27,17 +27,17 @@ export async function generateMetadata({
     title: {
       default: isHe
         ? "חן אופיר כהן | צלמת, במאית ועורכת דוקומנטרית"
-        : "Hen Ofir Cohen | Documentary Filmmaker, Cinematographer & Editor",
-      template: isHe ? "%s | חן אופיר כהן — צלמת ובמאית" : "%s | Hen Ofir Cohen — Filmmaker",
+        : "Chen Ofir Cohen | Documentary Filmmaker, Cinematographer & Editor",
+      template: isHe ? "%s | חן אופיר כהן — צלמת ובמאית" : "%s | Chen Ofir Cohen — Filmmaker",
     },
     description: isHe
       ? "חן אופיר כהן — צלמת קולנוע, במאית דוקומנטרית ועורכת. סרטים דוקומנטריים, סרטי תדמית לארגונים וסיפורים אנושיים למותגים. הפקות וידאו מקצועיות בישראל."
-      : "Hen Ofir Cohen — Israeli documentary filmmaker, cinematographer and editor. Professional video production: documentary films, nonprofit storytelling and branded human stories.",
+      : "Chen Ofir Cohen — Israeli documentary filmmaker, cinematographer and editor. Professional video production: documentary films, nonprofit storytelling and branded human stories.",
     keywords: isHe
       ? ["חן אופיר כהן", "צלמת", "במאית", "צלמת דוקומנטרית", "במאית דוקומנטרית", "עורכת וידאו", "סרטים דוקומנטריים", "הפקת וידאו", "צלמת קולנוע", "סרטי תדמית", "צילום וידאו ישראל"]
-      : ["Hen Ofir Cohen", "documentary filmmaker", "cinematographer", "video editor", "documentary films", "video production Israel", "nonprofit films", "branded content", "Israeli filmmaker"],
-    authors: [{ name: isHe ? "חן אופיר כהן" : "Hen Ofir Cohen", url: baseUrl }],
-    creator: isHe ? "חן אופיר כהן" : "Hen Ofir Cohen",
+      : ["Chen Ofir Cohen", "documentary filmmaker", "cinematographer", "video editor", "documentary films", "video production Israel", "nonprofit films", "branded content", "Israeli filmmaker"],
+    authors: [{ name: isHe ? "חן אופיר כהן" : "Chen Ofir Cohen", url: baseUrl }],
+    creator: isHe ? "חן אופיר כהן" : "Chen Ofir Cohen",
     alternates: {
       canonical: `${baseUrl}/${locale}`,
       languages: {
@@ -46,22 +46,22 @@ export async function generateMetadata({
       },
     },
     openGraph: {
-      siteName: isHe ? "חן אופיר כהן" : "Hen Ofir Cohen",
+      siteName: isHe ? "חן אופיר כהן" : "Chen Ofir Cohen",
       locale: isHe ? "he_IL" : "en_US",
       type: "website",
       url: `${baseUrl}/${locale}`,
       title: isHe
         ? "חן אופיר כהן | צלמת, במאית ועורכת דוקומנטרית"
-        : "Hen Ofir Cohen | Documentary Filmmaker, Cinematographer & Editor",
+        : "Chen Ofir Cohen | Documentary Filmmaker, Cinematographer & Editor",
       description: isHe
         ? "צלמת קולנוע, במאית דוקומנטרית ועורכת. סרטים דוקומנטריים, סרטי תדמית וסיפורים אנושיים."
         : "Documentary filmmaker, cinematographer and editor. Documentary films, nonprofit storytelling and branded human stories.",
       images: [
         {
-          url: "https://img.youtube.com/vi/GzucmfaxtoA/maxresdefault.jpg",
-          width: 1280,
-          height: 720,
-          alt: isHe ? "חן אופיר כהן — צלמת ובמאית דוקומנטרית" : "Hen Ofir Cohen — Documentary Filmmaker",
+          url: "/videos/hero-poster.jpg",
+          width: 1920,
+          height: 1080,
+          alt: isHe ? "חן אופיר כהן — צלמת ובמאית דוקומנטרית" : "Chen Ofir Cohen — Documentary Filmmaker",
         },
       ],
     },
@@ -69,11 +69,11 @@ export async function generateMetadata({
       card: "summary_large_image",
       title: isHe
         ? "חן אופיר כהן | צלמת, במאית ועורכת דוקומנטרית"
-        : "Hen Ofir Cohen | Documentary Filmmaker",
+        : "Chen Ofir Cohen | Documentary Filmmaker",
       description: isHe
         ? "צלמת קולנוע, במאית דוקומנטרית ועורכת. סרטים שנבנים מתוך קשב וכנות."
         : "Documentary filmmaker, cinematographer and editor. Thoughtful films shaped with care and honesty.",
-      images: ["https://img.youtube.com/vi/GzucmfaxtoA/maxresdefault.jpg"],
+      images: ["/videos/hero-poster.jpg"],
     },
     icons: {
       icon: "/fabicon.svg",
@@ -113,30 +113,30 @@ export default async function LocaleLayout({
       {
         "@type": "Person",
         "@id": `${baseUrl}/#person`,
-        name: locale === "he" ? "חן אופיר כהן" : "Hen Ofir Cohen",
+        name: locale === "he" ? "חן אופיר כהן" : "Chen Ofir Cohen",
         url: baseUrl,
         jobTitle: locale === "he" ? "צלמת קולנוע, במאית דוקומנטרית ועורכת" : "Documentary Filmmaker, Cinematographer & Editor",
         description: locale === "he"
           ? "חן אופיר כהן — צלמת קולנוע, במאית דוקומנטרית ועורכת. סרטים דוקומנטריים, סרטי תדמית וסיפורים אנושיים."
-          : "Hen Ofir Cohen — Documentary filmmaker, cinematographer and editor based in Israel.",
+          : "Chen Ofir Cohen — Documentary filmmaker, cinematographer and editor based in Israel.",
         sameAs: [
           "https://www.instagram.com/hen_ofir_cohen/",
           "https://www.facebook.com/hen.cohen.376",
         ],
-        image: "https://img.youtube.com/vi/GzucmfaxtoA/maxresdefault.jpg",
+        image: "/videos/hero-poster.jpg",
       },
       {
         "@type": "WebSite",
         "@id": `${baseUrl}/#website`,
         url: baseUrl,
-        name: locale === "he" ? "חן אופיר כהן — צלמת ובמאית דוקומנטרית" : "Hen Ofir Cohen — Documentary Filmmaker",
+        name: locale === "he" ? "חן אופיר כהן — צלמת ובמאית דוקומנטרית" : "Chen Ofir Cohen — Documentary Filmmaker",
         publisher: { "@id": `${baseUrl}/#person` },
         inLanguage: [locale === "he" ? "he-IL" : "en-US"],
       },
       {
         "@type": "ProfessionalService",
         "@id": `${baseUrl}/#service`,
-        name: locale === "he" ? "חן אופיר כהן — הפקות וידאו" : "Hen Ofir Cohen — Video Production",
+        name: locale === "he" ? "חן אופיר כהן — הפקות וידאו" : "Chen Ofir Cohen — Video Production",
         provider: { "@id": `${baseUrl}/#person` },
         url: baseUrl,
         serviceType: locale === "he"
