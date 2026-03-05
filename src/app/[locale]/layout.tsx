@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import { locales, getMessages, getDirection, type Locale } from "@/lib/i18n";
 import { rubik } from "@/lib/fonts";
-import Navbar from "@/components/Navbar";
+import PersistentHeader from "@/components/PersistentHeader";
 import PageTransition from "@/components/PageTransition";
-import FloatingWhatsApp from "@/components/FloatingWhatsApp";
+import SmoothScrollProvider from "@/components/SmoothScrollProvider";
+import GrainOverlay from "@/components/GrainOverlay";
 import ApertureCursor from "@/components/ApertureCursor";
 import LoadingScreen from "@/components/LoadingScreen";
 import "../globals.css";
@@ -28,7 +29,7 @@ export async function generateMetadata({
       default: isHe
         ? "חן אופיר כהן | צלמת, במאית ועורכת דוקומנטרית"
         : "Chen Ofir Cohen | Documentary Filmmaker, Cinematographer & Editor",
-      template: isHe ? "%s | חן אופיר כהן — צלמת ובמאית" : "%s | Chen Ofir Cohen — Filmmaker",
+      template: isHe ? "%s | חן אופיר כהן" : "%s | Chen Ofir Cohen",
     },
     description: isHe
       ? "חן אופיר כהן — צלמת קולנוע, במאית דוקומנטרית ועורכת. סרטים דוקומנטריים, סרטי תדמית לארגונים וסיפורים אנושיים למותגים. הפקות וידאו מקצועיות בישראל."
@@ -61,7 +62,7 @@ export async function generateMetadata({
           url: "https://hencohen.com/videos/hero-poster.jpg?v=2",
           width: 1920,
           height: 1080,
-          alt: isHe ? "חן אופיר כהן — צלמת ובמאית דוקומנטרית" : "Chen Ofir Cohen — Documentary Filmmaker",
+          alt: isHe ? "חן אופיר כהן" : "Chen Ofir Cohen",
         },
       ],
     },
@@ -129,36 +130,27 @@ export default async function LocaleLayout({
         "@type": "WebSite",
         "@id": `${baseUrl}/#website`,
         url: baseUrl,
-        name: locale === "he" ? "חן אופיר כהן — צלמת ובמאית דוקומנטרית" : "Chen Ofir Cohen — Documentary Filmmaker",
+        name: locale === "he" ? "חן אופיר כהן" : "Chen Ofir Cohen",
         publisher: { "@id": `${baseUrl}/#person` },
         inLanguage: [locale === "he" ? "he-IL" : "en-US"],
-      },
-      {
-        "@type": "ProfessionalService",
-        "@id": `${baseUrl}/#service`,
-        name: locale === "he" ? "חן אופיר כהן — הפקות וידאו" : "Chen Ofir Cohen — Video Production",
-        provider: { "@id": `${baseUrl}/#person` },
-        url: baseUrl,
-        serviceType: locale === "he"
-          ? ["צילום דוקומנטרי", "במאי סרטים", "עריכת וידאו", "סרטי תדמית", "הפקת וידאו"]
-          : ["Documentary Filmmaking", "Cinematography", "Video Editing", "Nonprofit Films", "Branded Content"],
-        areaServed: { "@type": "Country", name: "Israel" },
       },
     ],
   };
 
   return (
     <html lang={locale} dir={direction} className={fontClasses}>
-      <body className="antialiased">
+      <body className="antialiased bg-bg-dark text-text-light">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        <Navbar locale={loc} messages={messages.nav} />
-        <PageTransition>
-          {children}
-        </PageTransition>
-        <FloatingWhatsApp />
+        <SmoothScrollProvider>
+          <PersistentHeader locale={loc} messages={messages.nav} />
+          <PageTransition>
+            {children}
+          </PageTransition>
+        </SmoothScrollProvider>
+        <GrainOverlay />
         <ApertureCursor />
         <LoadingScreen />
       </body>

@@ -18,55 +18,66 @@ interface ProjectDetailClientProps {
 
 const CINEMATIC_EASE = [0.25, 0.1, 0.25, 1] as const;
 
-function VideoEmbed({ embedUrl, thumbnail, title }: { embedUrl: string; thumbnail: string; title: string }) {
+/* ── Video embed with click-to-play ── */
+function VideoEmbed({
+  embedUrl,
+  thumbnail,
+  title,
+}: {
+  embedUrl: string;
+  thumbnail: string;
+  title: string;
+}) {
   const [isPlaying, setIsPlaying] = useState(false);
 
   return (
-    <ScrollReveal className="mt-12">
-      <div className="relative w-full aspect-video overflow-hidden bg-[rgba(27,27,25,0.04)]">
-        {isPlaying ? (
-          <iframe
-            src={`${embedUrl}?autoplay=1&rel=0`}
-            title={title}
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-            className="absolute inset-0 w-full h-full"
+    <div className="relative w-full aspect-video overflow-hidden bg-[#111]">
+      {isPlaying ? (
+        <iframe
+          src={`${embedUrl}?autoplay=1&rel=0`}
+          title={title}
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+          className="absolute inset-0 w-full h-full"
+        />
+      ) : (
+        <button
+          onClick={() => setIsPlaying(true)}
+          className="absolute inset-0 w-full h-full group cursor-pointer"
+          aria-label={`Play ${title}`}
+        >
+          <Image
+            src={thumbnail}
+            alt={title}
+            fill
+            className="object-cover"
+            sizes="80vw"
           />
-        ) : (
-          <button
-            onClick={() => setIsPlaying(true)}
-            className="absolute inset-0 w-full h-full group cursor-pointer"
-            aria-label={`Play ${title}`}
-          >
-            <Image
-              src={thumbnail}
-              alt={title}
-              fill
-              className="object-cover"
-              sizes="(max-width: 900px) 100vw, 900px"
-            />
-            <div className="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors duration-300" />
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-white/90 group-hover:bg-white group-hover:scale-110 transition-all duration-300 flex items-center justify-center shadow-lg">
-                <Play className="w-7 h-7 md:w-8 md:h-8 text-[#1B1B19] ml-1" fill="#1B1B19" />
-              </div>
+          <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-colors duration-300" />
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-white/10 backdrop-blur-sm group-hover:bg-white/20 group-hover:scale-110 transition-all duration-300 flex items-center justify-center border border-white/20">
+              <Play className="w-7 h-7 md:w-8 md:h-8 text-white ml-1" fill="white" />
             </div>
-          </button>
-        )}
-      </div>
-    </ScrollReveal>
+          </div>
+        </button>
+      )}
+    </div>
   );
 }
 
-export default function ProjectDetailClient({ locale, slug, messages }: ProjectDetailClientProps) {
+export default function ProjectDetailClient({
+  locale,
+  slug,
+  messages,
+}: ProjectDetailClientProps) {
   const project = getProjectBySlug(slug);
   const reduced = useReducedMotion();
 
   if (!project) {
     return (
-      <main className="pt-28 pb-20 bg-bg-primary">
+      <main className="pt-40 md:pt-52 pb-20 bg-bg-dark min-h-screen">
         <div className="mx-auto max-w-[1200px] px-6 md:px-8 text-center">
-          <p className="text-text-secondary">Project not found</p>
+          <p className="text-text-dim">Project not found</p>
         </div>
       </main>
     );
@@ -74,107 +85,114 @@ export default function ProjectDetailClient({ locale, slug, messages }: ProjectD
 
   const currentIndex = projects.findIndex((p) => p.slug === slug);
   const nextProject = projects[(currentIndex + 1) % projects.length];
+  const prevProject =
+    projects[(currentIndex - 1 + projects.length) % projects.length];
+  const number = String(currentIndex + 1).padStart(2, "0");
 
   return (
-    <main className="pt-16 md:pt-20 bg-bg-primary">
-      {/* Hero image */}
-      <motion.div
-        initial={reduced ? { opacity: 0 } : { opacity: 0, scale: 1.02 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: reduced ? 0.3 : 0.8, ease: CINEMATIC_EASE }}
-        className="relative w-full aspect-[21/9] overflow-hidden"
-      >
-        <Image
-          src={project.heroImage}
-          alt={project.title[locale]}
-          fill
-          className="object-cover"
-          sizes="100vw"
-          priority
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-bg-primary/40 to-transparent" />
-      </motion.div>
-
-      <div className="mx-auto max-w-[900px] px-6 md:px-8 py-12 md:py-20">
+    <main className="pt-40 md:pt-52 pb-20 bg-bg-dark min-h-screen">
+      <div className="mx-auto max-w-[1200px] px-6 md:px-8">
         {/* Back link */}
         <motion.div
-          initial={reduced ? { opacity: 0 } : { opacity: 0, x: -20 }}
+          initial={reduced ? { opacity: 0 } : { opacity: 0, x: locale === "he" ? 20 : -20 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5, ease: CINEMATIC_EASE }}
+          transition={{ duration: 0.4, ease: CINEMATIC_EASE }}
         >
           <Link
             href={`/${locale}/work`}
-            className="text-xs tracking-[0.15em] text-text-secondary hover:text-text-primary transition-colors nav-link"
+            className="text-[11px] tracking-[0.2em] uppercase text-text-dim hover:text-text-light transition-colors duration-300 nav-link"
           >
             {messages.backToWork}
           </Link>
         </motion.div>
 
-        {/* Title and meta */}
+        {/* Metadata bar: number | title | category | year */}
         <motion.div
           initial={reduced ? { opacity: 0 } : { opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2, ease: CINEMATIC_EASE }}
-          className="mt-8"
+          transition={{ duration: 0.6, delay: 0.15, ease: CINEMATIC_EASE }}
+          className="mt-10 mb-12"
         >
-          <h1 className="font-heading text-3xl md:text-4xl lg:text-5xl text-text-primary">
+          <div className="flex flex-wrap items-center gap-3 text-[11px] tracking-[0.2em] uppercase text-text-dim mb-4">
+            <span className="font-mono">{number}</span>
+            <span className="w-[1px] h-3 bg-text-dim/40" />
+            <span>{project.category[locale]}</span>
+            <span className="w-[1px] h-3 bg-text-dim/40" />
+            <span>{project.year}</span>
+          </div>
+          <h1 className="font-display text-3xl md:text-4xl lg:text-5xl text-text-light leading-tight">
             {project.title[locale]}
           </h1>
-          <div className="mt-4 flex items-center gap-4 text-sm text-text-secondary">
-            <span>{project.year}</span>
-            <span className="w-1 h-1 rounded-full bg-text-primary" />
-            <span>{project.category[locale]}</span>
-          </div>
         </motion.div>
 
+        {/* YouTube embed — centered, 80% width */}
+        {project.videoEmbedUrl && (
+          <ScrollReveal className="flex justify-center mb-16">
+            <div className="w-full lg:w-[80%]">
+              <VideoEmbed
+                embedUrl={project.videoEmbedUrl}
+                thumbnail={project.thumbnail}
+                title={project.title[locale]}
+              />
+            </div>
+          </ScrollReveal>
+        )}
+
         {/* Synopsis */}
-        <ScrollReveal className="mt-10">
-          <h2 className="text-xs tracking-[0.2em] uppercase text-text-secondary mb-4">
+        <ScrollReveal className="mb-16 max-w-[720px]">
+          <h2 className="text-[11px] tracking-[0.25em] uppercase text-text-dim mb-4">
             {messages.synopsis}
           </h2>
-          <p className="text-text-secondary leading-relaxed whitespace-pre-line">
+          <p className="text-text-light/80 leading-relaxed whitespace-pre-line text-base md:text-lg">
             {project.synopsis[locale]}
           </p>
         </ScrollReveal>
 
-        {/* Video embed */}
-        {project.videoEmbedUrl && (
-          <VideoEmbed
-            embedUrl={project.videoEmbedUrl}
-            thumbnail={project.thumbnail}
-            title={project.title[locale]}
-          />
-        )}
-
         {/* Credits */}
         {project.credits && project.credits.length > 0 && (
-          <ScrollReveal className="mt-12">
-            <h2 className="text-xs tracking-[0.2em] uppercase text-text-secondary mb-4">
+          <ScrollReveal className="mb-20">
+            <h2 className="text-[11px] tracking-[0.25em] uppercase text-text-dim mb-6">
               {messages.credits}
             </h2>
-            <ul className="space-y-2">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-3">
               {project.credits.map((credit, index) => (
-                <li key={index} className="text-sm text-text-secondary">
+                <p key={index} className="text-sm text-text-light/70">
                   {credit[locale]}
-                </li>
+                </p>
               ))}
-            </ul>
+            </div>
           </ScrollReveal>
         )}
 
-        {/* Next project */}
-        <ScrollReveal className="mt-20 pt-10 border-t border-border">
-          <Link
-            href={`/${locale}/work/${nextProject.slug}`}
-            className="group block"
-          >
-            <p className="text-xs tracking-[0.2em] text-text-secondary mb-2">
-              {messages.nextProject}
-            </p>
-            <p className="font-heading text-2xl md:text-3xl text-text-primary group-hover:opacity-55 transition-opacity duration-300">
-              {nextProject.title[locale]}
-            </p>
-          </Link>
+        {/* Prev / Next navigation */}
+        <ScrollReveal>
+          <div className="border-t border-white/10 pt-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-8">
+            {/* Previous */}
+            <Link
+              href={`/${locale}/work/${prevProject.slug}`}
+              className="group block"
+            >
+              <p className="text-[11px] tracking-[0.2em] uppercase text-text-dim mb-1">
+                {messages.prevProject}
+              </p>
+              <p className="font-display text-lg md:text-xl text-text-light group-hover:text-accent transition-colors duration-300">
+                {prevProject.title[locale]}
+              </p>
+            </Link>
+
+            {/* Next */}
+            <Link
+              href={`/${locale}/work/${nextProject.slug}`}
+              className="group block sm:text-end"
+            >
+              <p className="text-[11px] tracking-[0.2em] uppercase text-text-dim mb-1">
+                {messages.nextProject}
+              </p>
+              <p className="font-display text-lg md:text-xl text-text-light group-hover:text-accent transition-colors duration-300">
+                {nextProject.title[locale]}
+              </p>
+            </Link>
+          </div>
         </ScrollReveal>
       </div>
     </main>

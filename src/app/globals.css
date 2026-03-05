@@ -1,49 +1,74 @@
 @import "tailwindcss";
 
+/* ── Dark cinematic theme ── */
 :root {
-  --bg-primary: #FAFBF6;
-  --bg-dark: #1B1B19;
-  --text-primary: #1B1B19;
-  --text-secondary: rgba(27, 27, 25, 0.55);
-  --text-light: #FAFBF6;
-  --accent: #1B1B19;
-  --border: rgba(27, 27, 25, 0.12);
+  --bg-dark: #0a0a0a;
+  --text-light: #f0f0f0;
+  --text-dim: rgba(240, 240, 240, 0.6);
+  --accent: #8a8462;
+  --grain-opacity: 0.04;
 }
 
 @theme inline {
-  --color-bg-primary: var(--bg-primary);
   --color-bg-dark: var(--bg-dark);
-  --color-text-primary: var(--text-primary);
-  --color-text-secondary: var(--text-secondary);
   --color-text-light: var(--text-light);
+  --color-text-dim: var(--text-dim);
   --color-accent: var(--accent);
-  --color-border: var(--border);
+}
+
+/* ── Birzia — bilingual display font ── */
+@font-face {
+  font-family: 'Birzia';
+  src: url('/fonts/birzia/Birzia-Bold.woff2') format('woff2'),
+       url('/fonts/birzia/Birzia-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Birzia';
+  src: url('/fonts/birzia/Birzia-Medium.woff2') format('woff2'),
+       url('/fonts/birzia/Birzia-Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Birzia';
+  src: url('/fonts/birzia/Birzia-Regular.woff2') format('woff2'),
+       url('/fonts/birzia/Birzia-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
 }
 
 html {
-  scroll-behavior: smooth;
+  scroll-behavior: auto; /* Lenis handles smooth scroll */
 }
 
 body {
-  background: var(--bg-primary);
-  color: var(--text-primary);
+  background: var(--bg-dark);
+  color: var(--text-light);
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-family: var(--font-rubik), system-ui, -apple-system, sans-serif;
 }
 
-/* Rubik — Hebrew + Latin */
+/* ── Display font (Birzia for giant name + headings) ── */
+.font-display {
+  font-family: 'Birzia', var(--font-rubik), system-ui, sans-serif;
+}
+
+/* ── Fallback body font ── */
 [dir="ltr"],
 [dir="rtl"] {
   font-family: var(--font-rubik), system-ui, sans-serif;
 }
 
-.font-heading,
-[dir="rtl"] .font-heading {
-  font-family: var(--font-rubik), system-ui, sans-serif;
-}
-
-/* Nav link underline — slides in from left */
+/* ── Nav link underline — slides in ── */
 .nav-link {
   position: relative;
 }
@@ -59,112 +84,68 @@ body {
   transition: width 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
-.nav-link:hover::after {
-  width: 100%;
-}
-
-/* Accent underline hover effect */
-.accent-underline {
-  position: relative;
-}
-
-.accent-underline::after {
-  content: '';
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-  width: 0;
-  height: 1px;
-  background: var(--text-primary);
-  transition: width 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
-}
-
-[dir="rtl"] .accent-underline::after {
+[dir="rtl"] .nav-link::after {
   left: auto;
   right: 0;
 }
 
-.accent-underline:hover::after {
+.nav-link:hover::after,
+.nav-link.active::after {
   width: 100%;
 }
 
-/* CTA Button — solid */
-.btn-solid {
-  display: inline-block;
-  transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+/* ── Film grain overlay (CSS-only, no PNG needed) ── */
+.grain-effect {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 256px 256px;
+  opacity: var(--grain-opacity);
+  mix-blend-mode: overlay;
+  animation: grainShift 0.5s steps(6) infinite;
 }
 
-.btn-solid:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 20px rgba(27, 27, 25, 0.15);
+@keyframes grainShift {
+  0% { transform: translate(0, 0); }
+  20% { transform: translate(-5%, -5%); }
+  40% { transform: translate(5%, 5%); }
+  60% { transform: translate(-2%, 3%); }
+  80% { transform: translate(3%, -2%); }
+  100% { transform: translate(0, 0); }
 }
 
-.btn-solid:active {
-  transform: translateY(0);
-  box-shadow: 0 2px 8px rgba(27, 27, 25, 0.1);
-  scale: 0.97;
-  transition: all 0.1s ease;
-}
-
-/* CTA Button — outline/ghost */
-.btn-outline {
-  display: inline-block;
-  transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
-}
-
-.btn-outline:hover {
-  transform: translateY(-2px);
-  background: rgba(255, 255, 255, 0.1);
-}
-
-.btn-outline:active {
-  transform: translateY(0);
-  scale: 0.97;
-  background: rgba(255, 255, 255, 0.15);
-  transition: all 0.1s ease;
-}
-
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 6px;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--bg-primary);
-}
-
-::-webkit-scrollbar-thumb {
-  background: rgba(27, 27, 25, 0.2);
-  border-radius: 3px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: rgba(27, 27, 25, 0.4);
-}
-
-/* Selection */
-::selection {
-  background: var(--text-primary);
-  color: var(--bg-primary);
-}
-
-/* Loading screen — stroke draw animation handled via JS (getTotalLength) */
-
-/* Custom aperture cursor — hide default cursor */
+/* ── Custom cursor — hide default ── */
 .custom-cursor-active,
 .custom-cursor-active * {
   cursor: none !important;
 }
 
-/* Reduced motion */
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
+/* ── Scrollbar (dark) ── */
+::-webkit-scrollbar {
+  width: 4px;
+}
 
-  .btn-solid:hover,
-  .btn-outline:hover {
-    transform: none;
-    box-shadow: none;
+::-webkit-scrollbar-track {
+  background: var(--bg-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(240, 240, 240, 0.15);
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(240, 240, 240, 0.3);
+}
+
+/* ── Selection ── */
+::selection {
+  background: var(--text-light);
+  color: var(--bg-dark);
+}
+
+/* ── Reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+  .grain-effect {
+    animation: none;
+    opacity: 0;
   }
 }
