@@ -37,6 +37,14 @@ export default function HeroSection() {
       >
         <source src="/videos/hero-bg.mp4" type="video/mp4" />
       </video>
+      {/* Gradient overlay for text contrast with mix-blend-mode: difference */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: "linear-gradient(to bottom, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.1) 35%, rgba(0,0,0,0.1) 65%, rgba(0,0,0,0.35) 100%)",
+          zIndex: 1,
+        }}
+      />
     </section>
   );
 }

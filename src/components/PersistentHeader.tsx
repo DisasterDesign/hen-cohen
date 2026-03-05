@@ -24,8 +24,8 @@ export default function PersistentHeader({ locale, messages }: PersistentHeaderP
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const nameLeftRef = useRef<HTMLSpanElement>(null);
   const nameRightRef = useRef<HTMLSpanElement>(null);
-  const navRef = useRef<HTMLDivElement>(null);
-  const subtitleRef = useRef<HTMLSpanElement>(null);
+  const navRef = useRef<HTMLElement>(null);
+  const subtitleRef = useRef<HTMLDivElement>(null);
   const cornersRef = useRef<HTMLDivElement>(null);
   const hasAnimated = useRef(false);
 
@@ -44,7 +44,6 @@ export default function PersistentHeader({ locale, messages }: PersistentHeaderP
 
     const tl = gsap.timeline({ delay: 0.3 });
 
-    // Animate name characters
     const leftChars = nameLeftRef.current?.querySelectorAll(".char");
     const rightChars = nameRightRef.current?.querySelectorAll(".char");
 
@@ -68,7 +67,6 @@ export default function PersistentHeader({ locale, messages }: PersistentHeaderP
       }, 0.1);
     }
 
-    // Nav links fade in
     if (navRef.current) {
       tl.from(navRef.current.children, {
         opacity: 0,
@@ -79,7 +77,6 @@ export default function PersistentHeader({ locale, messages }: PersistentHeaderP
       }, 0.8);
     }
 
-    // Subtitle
     if (subtitleRef.current) {
       tl.from(subtitleRef.current, {
         opacity: 0,
@@ -88,7 +85,6 @@ export default function PersistentHeader({ locale, messages }: PersistentHeaderP
       }, 0.9);
     }
 
-    // Corner info
     if (cornersRef.current) {
       tl.from(cornersRef.current.children, {
         opacity: 0,
@@ -120,101 +116,93 @@ export default function PersistentHeader({ locale, messages }: PersistentHeaderP
 
   return (
     <>
-      {/* Main header */}
       <header
         className="fixed inset-0 z-40 pointer-events-none"
         style={{
           mixBlendMode: isHomePage ? "difference" : undefined,
         }}
       >
-        <div className="relative h-full w-full px-6 md:px-10 lg:px-14 py-6 md:py-8 flex flex-col justify-between">
-          {/* Top row: Name + Nav */}
+        <div className="relative h-full w-full px-4 md:px-8 lg:px-12 py-4 md:py-6 flex flex-col justify-between">
+          {/* Top section */}
           <div className="pointer-events-auto">
-            <div className="flex items-start justify-between" dir="ltr">
-              {/* Left: Name + subtitle */}
-              <div className="flex flex-col">
-                <Link href={`/${locale}`} className="block">
-                  <span
-                    ref={nameLeftRef}
-                    className="font-display font-bold text-text-light leading-[0.9] block"
-                    style={{
-                      fontSize: "clamp(2.5rem, 10vw, 12rem)",
-                    }}
-                  >
-                    {splitChars(nameLeft)}
-                  </span>
-                </Link>
+            {/* Main row: [NAME LEFT] ... [NAV] ... [NAME RIGHT] — all on one baseline */}
+            <div className="flex items-baseline justify-between w-full" dir="ltr">
+              {/* Left name */}
+              <Link href={`/${locale}`} className="block flex-shrink-0">
                 <span
-                  ref={subtitleRef}
-                  className="text-text-dim text-[0.65rem] md:text-[0.7rem] uppercase tracking-[0.2em] mt-1 md:mt-2"
+                  ref={nameLeftRef}
+                  className="font-display font-bold text-text-light leading-[0.85] block whitespace-nowrap"
+                  style={{
+                    fontSize: "clamp(1.8rem, 7vw, 9rem)",
+                  }}
                 >
-                  {subtitle}
+                  {splitChars(nameLeft)}
                 </span>
-              </div>
+              </Link>
 
-              {/* Right: Nav + Surname */}
-              <div className="flex flex-col items-end">
-                <div className="flex items-start gap-6 md:gap-8">
-                  {/* Nav links (desktop) */}
-                  <div ref={navRef} className="hidden md:flex items-center gap-5 mt-2">
-                    {isProjectPage ? (
-                      <Link
-                        href={`/${locale}/work`}
-                        className="nav-link text-text-light text-[0.65rem] md:text-[0.75rem] uppercase tracking-[0.15em] pb-0.5"
-                      >
-                        BACK
-                      </Link>
-                    ) : (
-                      navLinks.map((link) => {
-                        const href = `/${locale}${link.href}`;
-                        const isActive = pathname.startsWith(href);
-                        return (
-                          <Link
-                            key={link.key}
-                            href={href}
-                            className={`nav-link text-[0.65rem] md:text-[0.75rem] uppercase tracking-[0.15em] pb-0.5 transition-colors ${
-                              isActive ? "text-text-light active" : "text-text-dim hover:text-text-light"
-                            }`}
-                          >
-                            {messages[link.key as keyof typeof messages]}
-                          </Link>
-                        );
-                      })
-                    )}
-                  </div>
-
-                  {/* Surname */}
-                  <Link href={`/${locale}`} className="block">
-                    <span
-                      ref={nameRightRef}
-                      className="font-display font-bold text-text-light leading-[0.9] block"
-                      style={{
-                        fontSize: "clamp(2.5rem, 10vw, 12rem)",
-                      }}
-                    >
-                      {splitChars(nameRight)}
-                    </span>
+              {/* Center nav (desktop only) */}
+              <nav ref={navRef} className="hidden md:flex items-baseline gap-4 lg:gap-6 flex-shrink-1 px-4 lg:px-8">
+                {isProjectPage ? (
+                  <Link
+                    href={`/${locale}/work`}
+                    className="nav-link text-text-light text-[0.65rem] lg:text-[0.75rem] uppercase tracking-[0.15em] pb-0.5"
+                  >
+                    BACK
                   </Link>
-                </div>
+                ) : (
+                  navLinks.map((link) => {
+                    const href = `/${locale}${link.href}`;
+                    const isActive = pathname.startsWith(href);
+                    return (
+                      <Link
+                        key={link.key}
+                        href={href}
+                        className={`nav-link text-[0.65rem] lg:text-[0.75rem] uppercase tracking-[0.15em] pb-0.5 transition-colors whitespace-nowrap ${
+                          isActive ? "text-text-light active" : "text-text-dim hover:text-text-light"
+                        }`}
+                      >
+                        {messages[link.key as keyof typeof messages]}
+                      </Link>
+                    );
+                  })
+                )}
+              </nav>
 
-                {/* Language switcher */}
-                <Link
-                  href={otherPath}
-                  className="text-text-dim text-[0.6rem] tracking-[0.15em] hover:text-text-light transition-colors mt-1 md:mt-2"
+              {/* Right name */}
+              <Link href={`/${locale}`} className="block flex-shrink-0">
+                <span
+                  ref={nameRightRef}
+                  className="font-display font-bold text-text-light leading-[0.85] block whitespace-nowrap"
+                  style={{
+                    fontSize: "clamp(1.8rem, 7vw, 9rem)",
+                  }}
                 >
-                  {langLabel}
-                </Link>
-              </div>
+                  {splitChars(nameRight)}
+                </span>
+              </Link>
+            </div>
+
+            {/* Second row: subtitle (left) + lang switcher (right) */}
+            <div ref={subtitleRef} className="flex items-center justify-between mt-1 md:mt-2" dir="ltr">
+              <span className="text-text-dim text-[0.6rem] md:text-[0.65rem] uppercase tracking-[0.2em]">
+                {subtitle}
+              </span>
+              <Link
+                href={otherPath}
+                className="text-text-dim text-[0.55rem] md:text-[0.6rem] tracking-[0.15em] uppercase hover:text-text-light transition-colors opacity-60 hover:opacity-100"
+              >
+                {langLabel}
+              </Link>
             </div>
 
             {/* Mobile hamburger */}
             <button
               onClick={() => setIsMobileOpen(!isMobileOpen)}
-              className="md:hidden absolute top-6 text-text-light z-50"
-              style={{ [isHe ? "left" : "right"]: "1.5rem" }}
+              className="md:hidden absolute top-4 text-text-light z-50"
+              style={{ [isHe ? "left" : "right"]: "1rem" }}
               aria-label="Toggle menu"
             >
-              {isMobileOpen ? <X size={24} /> : <Menu size={24} />}
+              {isMobileOpen ? <X size={22} /> : <Menu size={22} />}
             </button>
           </div>
 
@@ -222,7 +210,7 @@ export default function PersistentHeader({ locale, messages }: PersistentHeaderP
           {isHomePage && (
             <div ref={cornersRef} className="pointer-events-auto flex justify-between items-end" dir="ltr">
               {/* Bottom-left: Contact */}
-              <div className="flex flex-col gap-1 text-text-dim text-[0.6rem] md:text-[0.65rem] tracking-[0.1em] font-mono">
+              <div className="flex flex-col gap-1 text-text-dim text-[0.55rem] md:text-[0.6rem] tracking-[0.1em] font-mono">
                 <a href="mailto:chen@hencohen.com" className="hover:text-text-light transition-colors">
                   chen@hencohen.com
                 </a>
@@ -230,7 +218,7 @@ export default function PersistentHeader({ locale, messages }: PersistentHeaderP
               </div>
 
               {/* Bottom-right: Social */}
-              <div className="flex flex-col items-end gap-1 text-text-dim text-[0.6rem] md:text-[0.65rem] tracking-[0.1em] uppercase">
+              <div className="flex flex-col items-end gap-1 text-text-dim text-[0.55rem] md:text-[0.6rem] tracking-[0.1em] uppercase">
                 <a
                   href="https://www.instagram.com/hen_ofir_cohen/"
                   target="_blank"
@@ -265,10 +253,11 @@ export default function PersistentHeader({ locale, messages }: PersistentHeaderP
           >
             <button
               onClick={() => setIsMobileOpen(false)}
-              className="absolute top-6 right-6 text-text-light"
+              className="absolute top-4 text-text-light"
+              style={{ [isHe ? "left" : "right"]: "1rem" }}
               aria-label="Close menu"
             >
-              <X size={28} />
+              <X size={22} />
             </button>
 
             {navLinks.map((link, i) => {
