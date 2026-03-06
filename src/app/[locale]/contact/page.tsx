@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { getMessages, type Locale } from "@/lib/i18n";
-import InfoClient from "./InfoClient";
+import ContactClient from "./ContactClient";
+import Footer from "@/components/Footer";
 
 export async function generateMetadata({
   params,
@@ -11,23 +12,18 @@ export async function generateMetadata({
   const isHe = locale === "he";
 
   return {
-    title: isHe
-      ? "צור קשר | חן אופיר כהן — צלמת ובמאית"
-      : "Contact | Chen Ofir Cohen — Filmmaker",
+    title: isHe ? "צור קשר | חן אופיר כהן — צלמת ובמאית" : "Contact | Chen Ofir Cohen — Filmmaker",
     description: isHe
       ? "רוצים ליצור סרט דוקומנטרי או סרט תדמית? צרו קשר עם חן אופיר כהן — צלמת קולנוע, במאית דוקומנטרית ועורכת."
       : "Want to create a documentary or branded film? Get in touch with Chen Ofir Cohen — filmmaker, cinematographer and editor.",
     alternates: {
-      canonical: `https://hencohen.com/${locale}/info`,
-      languages: {
-        he: "https://hencohen.com/he/info",
-        en: "https://hencohen.com/en/info",
-      },
+      canonical: `https://hencohen.com/${locale}/contact`,
+      languages: { he: "https://hencohen.com/he/contact", en: "https://hencohen.com/en/contact" },
     },
   };
 }
 
-export default async function InfoPage({
+export default async function ContactPage({
   params,
 }: {
   params: Promise<{ locale: string }>;
@@ -36,5 +32,10 @@ export default async function InfoPage({
   const loc = locale as Locale;
   const messages = getMessages(loc);
 
-  return <InfoClient locale={loc} messages={messages.info} />;
+  return (
+    <>
+      <ContactClient locale={loc} messages={messages.contact} />
+      <Footer locale={loc} messages={messages.footer} navMessages={messages.nav} />
+    </>
+  );
 }

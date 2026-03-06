@@ -7,7 +7,7 @@ const baseUrl = "https://hencohen.com";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const locales = ["he", "en"];
-  const staticPages = ["", "/work", "/overview", "/info"];
+  const staticPages = ["", "/about", "/work", "/contact"];
   const projectSlugs = getAllProjectSlugs();
 
   const entries: MetadataRoute.Sitemap = [];

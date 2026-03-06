@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { getMessages, type Locale } from "@/lib/i18n";
-import OverviewClient from "./OverviewClient";
+import AboutClient from "./AboutClient";
+import Footer from "@/components/Footer";
 
 export async function generateMetadata({
   params,
@@ -11,23 +12,18 @@ export async function generateMetadata({
   const isHe = locale === "he";
 
   return {
-    title: isHe
-      ? "אודות חן אופיר כהן | צלמת קולנוע ובמאית דוקומנטרית"
-      : "About Chen Ofir Cohen | Documentary Filmmaker & Cinematographer",
+    title: isHe ? "אודות חן אופיר כהן | צלמת קולנוע ובמאית דוקומנטרית" : "About Chen Ofir Cohen | Documentary Filmmaker & Cinematographer",
     description: isHe
       ? "חן אופיר כהן — צלמת קולנוע, במאית דוקומנטרית ועורכת. מעורבת בכל שלבי ההפקה, מהבימוי ועד העריכה. סרטים שנבנים מתוך קשב וכנות."
       : "Chen Ofir Cohen — filmmaker, cinematographer and editor involved in every stage of production. Documentary films crafted with care and honesty.",
     alternates: {
-      canonical: `https://hencohen.com/${locale}/overview`,
-      languages: {
-        he: "https://hencohen.com/he/overview",
-        en: "https://hencohen.com/en/overview",
-      },
+      canonical: `https://hencohen.com/${locale}/about`,
+      languages: { he: "https://hencohen.com/he/about", en: "https://hencohen.com/en/about" },
     },
   };
 }
 
-export default async function OverviewPage({
+export default async function AboutPage({
   params,
 }: {
   params: Promise<{ locale: string }>;
@@ -36,5 +32,10 @@ export default async function OverviewPage({
   const loc = locale as Locale;
   const messages = getMessages(loc);
 
-  return <OverviewClient locale={loc} messages={messages.overview} />;
+  return (
+    <>
+      <AboutClient locale={loc} messages={messages.about} />
+      <Footer locale={loc} messages={messages.footer} navMessages={messages.nav} />
+    </>
+  );
 }

@@ -9,32 +9,32 @@ import { projects } from "@/data/projects";
 import { useReducedMotion } from "@/lib/useReducedMotion";
 import type { Locale, Messages } from "@/lib/i18n";
 
-interface WorkGridClientProps {
+interface SelectedWorkSectionProps {
   locale: Locale;
-  messages: Messages["work"];
+  messages: Messages["selectedWork"];
 }
 
 const CINEMATIC_EASE = [0.25, 0.1, 0.25, 1] as const;
 
-export default function WorkGridClient({ locale, messages }: WorkGridClientProps) {
+export default function SelectedWorkSection({ locale, messages }: SelectedWorkSectionProps) {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.1 });
+  const isInView = useInView(ref, { once: true, amount: 0.15 });
   const reduced = useReducedMotion();
 
   return (
-    <main className="pt-28 md:pt-36 pb-20 md:pb-28 bg-bg-primary">
+    <section className="py-20 md:py-28 bg-bg-primary">
       <div ref={ref} className="mx-auto max-w-[1200px] px-6 md:px-8">
         <SectionHeading label={messages.label} title={messages.title} />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
-          {projects.map((project, index) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+          {projects.slice(0, 4).map((project, index) => (
             <motion.div
               key={project.slug}
               initial={reduced ? { opacity: 0 } : { opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{
                 duration: reduced ? 0.2 : 0.6,
-                delay: reduced ? 0 : 0.1 + index * 0.12,
+                delay: reduced ? 0 : 0.1 + index * 0.1,
                 ease: CINEMATIC_EASE,
               }}
             >
@@ -69,7 +69,21 @@ export default function WorkGridClient({ locale, messages }: WorkGridClientProps
             </motion.div>
           ))}
         </div>
+
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : {}}
+          transition={{ duration: 0.6, delay: reduced ? 0.2 : 0.8, ease: CINEMATIC_EASE }}
+          className="mt-12 text-center"
+        >
+          <Link
+            href={`/${locale}/work`}
+            className="inline-block text-xs tracking-[0.2em] text-text-secondary hover:text-text-primary transition-colors accent-underline pb-1"
+          >
+            {messages.viewAll}
+          </Link>
+        </motion.div>
       </div>
-    </main>
+    </section>
   );
 }

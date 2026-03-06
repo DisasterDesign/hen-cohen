@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { getMessages, type Locale } from "@/lib/i18n";
 import WorkGridClient from "./WorkGridClient";
+import Footer from "@/components/Footer";
 
 export async function generateMetadata({
   params,
@@ -11,18 +12,13 @@ export async function generateMetadata({
   const isHe = locale === "he";
 
   return {
-    title: isHe
-      ? "עבודות נבחרות | סרטים דוקומנטריים — חן אופיר כהן"
-      : "Selected Work | Documentary Films — Chen Ofir Cohen",
+    title: isHe ? "עבודות נבחרות | סרטים דוקומנטריים — חן אופיר כהן" : "Selected Work | Documentary Films — Chen Ofir Cohen",
     description: isHe
       ? "פרויקטים נבחרים של חן אופיר כהן — סרטים דוקומנטריים, סרטי תדמית לארגונים ומלכ״רים, וסיפורים אנושיים למותגים."
       : "Selected projects by Chen Ofir Cohen — documentary films, organizational storytelling, and branded human stories.",
     alternates: {
       canonical: `https://hencohen.com/${locale}/work`,
-      languages: {
-        he: "https://hencohen.com/he/work",
-        en: "https://hencohen.com/en/work",
-      },
+      languages: { he: "https://hencohen.com/he/work", en: "https://hencohen.com/en/work" },
     },
   };
 }
@@ -36,5 +32,10 @@ export default async function WorkPage({
   const loc = locale as Locale;
   const messages = getMessages(loc);
 
-  return <WorkGridClient locale={loc} messages={messages.work} />;
+  return (
+    <>
+      <WorkGridClient locale={loc} messages={messages.work} />
+      <Footer locale={loc} messages={messages.footer} navMessages={messages.nav} />
+    </>
+  );
 }

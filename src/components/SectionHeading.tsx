@@ -24,7 +24,7 @@ export default function SectionHeading({ label, title, className = "" }: Section
           initial={reduced ? { opacity: 0 } : { opacity: 0, y: 15 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: reduced ? 0.2 : 0.5, ease: CINEMATIC_EASE }}
-          className="text-xs tracking-[0.2em] uppercase text-text-dim mb-3"
+          className="text-xs tracking-[0.2em] uppercase text-text-secondary mb-3"
         >
           {label}
         </motion.p>
@@ -38,7 +38,7 @@ export default function SectionHeading({ label, title, className = "" }: Section
               : {}
           }
           transition={{ duration: reduced ? 0.2 : 0.8, delay: label ? 0.1 : 0, ease: CINEMATIC_EASE }}
-          className="font-display text-3xl md:text-4xl lg:text-5xl text-text-light"
+          className="font-heading text-3xl md:text-4xl lg:text-5xl text-text-primary"
         >
           {title}
         </motion.h2>

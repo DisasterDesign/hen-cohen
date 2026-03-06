@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { locales, getMessages, type Locale } from "@/lib/i18n";
 import { getAllProjectSlugs, getProjectBySlug } from "@/data/projects";
 import ProjectDetailClient from "./ProjectDetailClient";
+import Footer from "@/components/Footer";
 
 export function generateStaticParams() {
   const slugs = getAllProjectSlugs();
@@ -27,10 +28,9 @@ export async function generateMetadata({
   return {
     title,
     description,
-    keywords:
-      loc === "he"
-        ? [title, "חן אופיר כהן", "סרט דוקומנטרי", project.category.he, "צלמת", "במאית"]
-        : [title, "Chen Ofir Cohen", "documentary film", project.category.en, "filmmaker", "cinematographer"],
+    keywords: loc === "he"
+      ? [title, "חן אופיר כהן", "סרט דוקומנטרי", project.category.he, "צלמת", "במאית"]
+      : [title, "Chen Ofir Cohen", "documentary film", project.category.en, "filmmaker", "cinematographer"],
     alternates: {
       canonical: `${baseUrl}/${locale}/work/${slug}`,
       languages: {
@@ -63,5 +63,10 @@ export default async function ProjectPage({
   const loc = locale as Locale;
   const messages = getMessages(loc);
 
-  return <ProjectDetailClient locale={loc} slug={slug} messages={messages.project} />;
+  return (
+    <>
+      <ProjectDetailClient locale={loc} slug={slug} messages={messages.project} />
+      <Footer locale={loc} messages={messages.footer} navMessages={messages.nav} />
+    </>
+  );
 }
