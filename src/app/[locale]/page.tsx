@@ -17,10 +17,10 @@ export async function generateMetadata({
   return {
     title: isHe
       ? "חן אופיר כהן | צלמת, במאית ועורכת דוקומנטרית"
-      : "Chen Ofir Cohen | Documentary Filmmaker, Cinematographer & Editor",
+      : "Hen Ofir Cohen | Documentary Filmmaker, Cinematographer & Editor",
     description: isHe
       ? "חן אופיר כהן — צלמת קולנוע, במאית דוקומנטרית ועורכת. סרטים דוקומנטריים, סרטי תדמית לארגונים וסיפורים אנושיים למותגים. הפקות וידאו מקצועיות בישראל."
-      : "Chen Ofir Cohen — Israeli documentary filmmaker, cinematographer and editor. Documentary films, nonprofit storytelling and branded human stories.",
+      : "Hen Ofir Cohen — Israeli documentary filmmaker, cinematographer and editor. Documentary films, nonprofit storytelling and branded human stories.",
     alternates: {
       canonical: `https://hencohen.com/${locale}`,
       languages: { he: "https://hencohen.com/he", en: "https://hencohen.com/en" },

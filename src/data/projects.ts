@@ -35,8 +35,8 @@ export const projects: Project[] = [
     heroImage: "/images/thumbnails/bfl-warriors-weightless.jpg",
     videoEmbedUrl: "https://www.youtube.com/embed/tBv7n15X9as",
     credits: [
-      { he: "במאית וצלמת: חן אופיר כהן", en: "Director & Cinematographer: Chen Ofir Cohen" },
-      { he: "עריכה: חן אופיר כהן", en: "Editing: Chen Ofir Cohen" },
+      { he: "במאית וצלמת: חן אופיר כהן", en: "Director & Cinematographer: Hen Ofir Cohen" },
+      { he: "עריכה: חן אופיר כהן", en: "Editing: Hen Ofir Cohen" },
     ],
   },
   {
@@ -62,8 +62,8 @@ export const projects: Project[] = [
     heroImage: "/images/thumbnails/the-jewish-soul.jpg",
     videoEmbedUrl: "https://www.youtube.com/embed/BOs1EbcyPx0",
     credits: [
-      { he: "במאית וצלמת: חן אופיר כהן", en: "Director & Cinematographer: Chen Ofir Cohen" },
-      { he: "עריכה: חן אופיר כהן", en: "Editing: Chen Ofir Cohen" },
+      { he: "במאית וצלמת: חן אופיר כהן", en: "Director & Cinematographer: Hen Ofir Cohen" },
+      { he: "עריכה: חן אופיר כהן", en: "Editing: Hen Ofir Cohen" },
     ],
   },
   {
@@ -89,8 +89,8 @@ export const projects: Project[] = [
     heroImage: "/images/thumbnails/bfl-vienna-marathon.jpg",
     videoEmbedUrl: "https://www.youtube.com/embed/VDUG0eCMfuw",
     credits: [
-      { he: "במאית וצלמת: חן אופיר כהן", en: "Director & Cinematographer: Chen Ofir Cohen" },
-      { he: "עריכה: חן אופיר כהן", en: "Editing: Chen Ofir Cohen" },
+      { he: "במאית וצלמת: חן אופיר כהן", en: "Director & Cinematographer: Hen Ofir Cohen" },
+      { he: "עריכה: חן אופיר כהן", en: "Editing: Hen Ofir Cohen" },
     ],
   },
   {
@@ -116,8 +116,8 @@ export const projects: Project[] = [
     heroImage: "/images/thumbnails/the-medical-mission.jpg",
     videoEmbedUrl: "https://www.youtube.com/embed/fao56-bSsd0",
     credits: [
-      { he: "במאית וצלמת: חן אופיר כהן", en: "Director & Cinematographer: Chen Ofir Cohen" },
-      { he: "עריכה: חן אופיר כהן", en: "Editing: Chen Ofir Cohen" },
+      { he: "במאית וצלמת: חן אופיר כהן", en: "Director & Cinematographer: Hen Ofir Cohen" },
+      { he: "עריכה: חן אופיר כהן", en: "Editing: Hen Ofir Cohen" },
     ],
   },
   {
@@ -143,7 +143,7 @@ export const projects: Project[] = [
     heroImage: "/images/thumbnails/shir-and-omri-wedding.jpg",
     videoEmbedUrl: "https://www.youtube.com/embed/74vgINoCkJs",
     credits: [
-      { he: "צילום ועריכה: חן אופיר כהן", en: "Cinematography & Editing: Chen Ofir Cohen" },
+      { he: "צילום ועריכה: חן אופיר כהן", en: "Cinematography & Editing: Hen Ofir Cohen" },
     ],
   },
   {
@@ -169,8 +169,8 @@ export const projects: Project[] = [
     heroImage: "/images/thumbnails/mia-alhalel-biohacking.jpg",
     videoEmbedUrl: "https://www.youtube.com/embed/GzucmfaxtoA",
     credits: [
-      { he: "במאית וצלמת: חן אופיר כהן", en: "Director & Cinematographer: Chen Ofir Cohen" },
-      { he: "עריכה: חן אופיר כהן", en: "Editing: Chen Ofir Cohen" },
+      { he: "במאית וצלמת: חן אופיר כהן", en: "Director & Cinematographer: Hen Ofir Cohen" },
+      { he: "עריכה: חן אופיר כהן", en: "Editing: Hen Ofir Cohen" },
     ],
   },
   {
@@ -196,8 +196,8 @@ export const projects: Project[] = [
     heroImage: "/images/thumbnails/the-working-cowboy.jpg",
     videoEmbedUrl: "https://www.youtube.com/embed/uXQ5kOPrT_o",
     credits: [
-      { he: "במאית וצלמת: חן אופיר כהן", en: "Director & Cinematographer: Chen Ofir Cohen" },
-      { he: "עריכה: חן אופיר כהן", en: "Editing: Chen Ofir Cohen" },
+      { he: "במאית וצלמת: חן אופיר כהן", en: "Director & Cinematographer: Hen Ofir Cohen" },
+      { he: "עריכה: חן אופיר כהן", en: "Editing: Hen Ofir Cohen" },
     ],
   },
   {
@@ -223,8 +223,8 @@ export const projects: Project[] = [
     heroImage: "/images/thumbnails/yaaleh-or-synergetic-architecture.jpg",
     videoEmbedUrl: "https://www.youtube.com/embed/8ClVr2IFkrk",
     credits: [
-      { he: "במאית וצלמת: חן אופיר כהן", en: "Director & Cinematographer: Chen Ofir Cohen" },
-      { he: "עריכה: חן אופיר כהן", en: "Editing: Chen Ofir Cohen" },
+      { he: "במאית וצלמת: חן אופיר כהן", en: "Director & Cinematographer: Hen Ofir Cohen" },
+      { he: "עריכה: חן אופיר כהן", en: "Editing: Hen Ofir Cohen" },
     ],
   },
   {
@@ -250,7 +250,7 @@ export const projects: Project[] = [
     heroImage: "/images/thumbnails/hava-and-ariel-wedding.jpg",
     videoEmbedUrl: "https://www.youtube.com/embed/WtJ1QdWV7Tg",
     credits: [
-      { he: "צילום ועריכה: חן אופיר כהן", en: "Cinematography & Editing: Chen Ofir Cohen" },
+      { he: "צילום ועריכה: חן אופיר כהן", en: "Cinematography & Editing: Hen Ofir Cohen" },
     ],
   },
 ];
