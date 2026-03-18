@@ -139,7 +139,7 @@ export default async function LocaleLayout({
         provider: { "@id": `${baseUrl}/#person` },
         url: baseUrl,
         serviceType: locale === "he"
-          ? ["צילום דוקומנטרי", "במאי סרטים", "עריכת וידאו", "סרטי תדמית", "הפקת וידאו"]
+          ? ["צילום דוקומנטרי", "במאית סרטים", "עריכת וידאו", "סרטי תדמית", "הפקת וידאו"]
           : ["Documentary Filmmaking", "Cinematography", "Video Editing", "Nonprofit Films", "Branded Content"],
         areaServed: { "@type": "Country", name: "Israel" },
       },
